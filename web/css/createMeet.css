@@ -1,0 +1,432 @@
+ html,body{-ms-overflow-style: scrollbar;font-family: "Hiragino Sans GB","Hiragino Sans GB W3","微软雅黑","Microsoft Yahei",Arial,"Times New Roman",Times,serif !important}
+.table-condensed th,td{
+    vertical-align: middle;
+}
+.part1{
+	margin-top: 20px;
+    margin-bottom: 30px;
+}
+.press-step{
+    overflow: hidden;
+    width: 780px;
+    margin: 0 auto;
+}
+.press-step .step>span{
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+    display: inline-block;
+    background-color: rgba(204, 204, 204, 1);
+    font-size: 24px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    float: left;
+    margin-right: 10px;
+}
+.step{
+	overflow: hidden;
+	float: left;
+}
+.step-title{
+	font-size:16px;
+}
+
+.border_top{
+    border-top: 2px solid #8992b2
+}
+.step-ms{
+	font-size: 10px;
+	color: gray;
+}
+.step>div{
+	float: left;
+}
+.step p{
+	display: inline-block;
+	margin: 0!important;
+}
+.step-line{
+	height: 1px;
+	width: 80px;
+	background-color: gray;
+	margin: 19px 20px;
+}
+
+.step .active{
+	background-color: rgba(74, 141, 191, 1)!important;
+}
+.box{
+	border-top: 3px solid rgba(74, 141, 191, 1);
+	padding: 0 30px;
+}
+.meetType .form-control{
+	height: 45px;
+	line-height:30px;
+}
+.meetType select,.laydate-icon{
+    border-radius: 3px
+}
+#select2-w0-container{
+    line-height: 30px;
+}
+.dataInput>div{
+    margin: 0!important;
+    padding: 0 !important
+}
+.hotel_active {
+    height: 25px;
+    width: 25px;
+    background: url(../../images/u1770.png) no-repeat;
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    display: block;
+}
+.meetType .col-xs-2{
+	position: relative;
+}
+.meetType .form-control.active{
+	border: 1px solid #5cb85c
+}
+.laydate-icon{
+	list-style: none;
+	height: 43px !important;
+	line-height: 43px !important;
+	padding-left: 10px;
+}
+.laydate_box{
+	-webkit-box-sizing: content-box !important; 
+    -moz-box-sizing:content-box !important;
+    box-sizing: content-box !important;
+}
+.laydate_box  *{
+	-webkit-box-sizing: content-box !important; 
+    -moz-box-sizing:content-box !important;
+    box-sizing: content-box !important;
+}
+#name{
+    height: 43px;
+    margin-left: 17px;
+    padding-left: 10px;
+}
+.startitle{
+	padding:0 !important;
+}
+.endtitle{
+	padding:0 !important;
+}
+.meetType .col-md-3{
+	padding:0 !important;
+}
+.upload{
+	height: 122px;
+	width: 100%;
+	border: 1px solid #d2d6de;
+	text-align: center;
+    border-radius: 3px
+}
+.fa-plus{
+	font-size: 30px;
+	margin-top: 35px;
+}
+#exampleInputFile{
+	width: 100%;
+    height: 120px;
+    position: absolute;
+    top:10px;
+    opacity: 0;
+    cursor: pointer;
+}
+.dos{
+	height: 120px;
+	width: 100%;
+	background: rgba(25, 158, 216, 0.2);
+	border:1px solid  rgba(74, 141, 191, 1);
+    border-radius: 3px
+}
+.okimg{
+	float: left;
+	margin: 25px 40px 0;
+}
+.excel{
+	float: left;
+	margin-top: 20px;
+}
+.excel span{
+	display: inline-block;
+	margin-bottom: 20px;
+}
+.excel span input{
+    width: 125px;
+    height: 40px;
+    margin-right: 10px;
+    border: none;
+    color: white;
+    border-radius: 3px
+}
+.reset{
+	background: rgba(74, 141, 191, 1);
+}
+.delete{
+	background: #dd4b39;
+}
+.hotel-title{
+	padding:0 !important;
+}
+.Hotel{
+	width: 100%;
+    background-color: rgba(25, 158, 216, 0.2);
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(74, 141, 191, 1);
+    padding: 30px;
+    border-radius: 3px
+
+}
+.showHotel{
+	overflow: hidden;
+}
+.hotelInformation{
+	background: white;
+	height: 73px;
+	padding-top: 14px;
+	margin: 10px 5px;
+    border-radius: 3px
+}
+.hotelAddress{
+	color: #999999;
+	font-size: 12px;
+	display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+}
+.itemname{
+	display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width:60%;
+    float: left;
+}
+.hotelDelete{
+	color: #4A8DBF;
+	font-size: 12px;
+	float: right;
+	cursor: pointer;
+}
+.xieyi{
+	background: rgba(255, 153, 0, 1);
+	color: white;
+	padding: 3px;
+}
+.hotelAdd{
+	width: 79px;
+	height: 40px;
+	background: rgba(74, 141, 191, 1);
+	border: none;
+	color: white;
+}
+.Add{
+	display: none;
+}
+.binfomation>div:last-child .Add{
+    display: inline-block;
+    border-radius: 3px
+}
+.beizhu{
+	margin-bottom: 20px;
+	padding: 0!important;
+	border: 1px solid rgba(74, 141, 191, 1);
+	margin-right: 65px;
+    border-radius: 3px
+}
+.beizhu select{
+    width: 140px;
+    height: 46px;
+}
+.beizhu textarea{
+    width:90%;
+    margin: 10px 10px;
+}
+textarea{
+    border-radius: 3px;
+}
+.btitle{
+	height: 46px;
+	border-bottom:1px solid rgba(74, 141, 191, 1); 
+	line-height: 46px;
+	padding-left: 12px;	
+	background: rgba(25, 158, 216, 0.2);
+}
+.binfomation{
+	padding: 20px 0;
+}
+.binfomation div{
+	margin-bottom: 20px;
+}
+.beizhu .button{
+	height: 40px;
+	width: 73px;
+	background: rgba(74, 141, 191, 1);
+	border: none;
+	color: white;
+	margin: 0 10px;
+}
+.Del{
+	display: none;
+}
+.binfomation>div:last-child .Del{
+   display: inline-block;
+}
+.next{
+	display: inline-block;
+	width: 240px;
+    height: 40px;
+    background: inherit;
+    background-color: rgba(0, 204, 51, 1);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    line-height: 40px;
+}
+.nexttype{
+	text-align: center;
+    margin: 10px;
+}
+@media (min-width: 768px){
+.modal-dialog {
+    width: 980px !important;
+    margin: 30px auto;
+}
+}
+.modal-body {
+    position: relative;
+    padding: 0px !important;
+}
+iframe{
+	width: 100%;
+}
+.titleBlue{
+	display:block;
+    height: 28px;
+    width: 8px;
+    background: rgba(74, 141, 191, 1);
+    float: left;
+}
+.title-font{
+	font-size: 18px;
+	margin: 6px 5px 0;
+    display: inline-block;
+}
+.modify{
+	width: 140px;
+    height: 40px;
+    background: inherit;
+    background-color: rgba(0, 204, 51, 1);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    line-height: 27px !important;
+}
+.meettalbe{
+    margin-top: 40px;
+}
+.hotelClassForJs{display: none}
+#bchangeprice{cursor:pointer;}
+/*预览页面*/
+.meetmodify td,th{
+	vertical-align: middle !important;
+	text-align: left;
+}
+.meetmodify .editable {
+    width: 100%;
+    overflow: hidden;
+    display: inline-block;
+    background: #f0f2f5;
+    padding: 0 6px;
+    transition: .2s;
+    white-space: nowrap;
+    border-radius: 3px;
+    border: 1px solid #f0f2f5;
+    line-height: 30px;
+    text-align: left;
+}
+.meetmodify .editableall{
+	width: 100%;
+    max-width:390px;
+    overflow: hidden;
+    display: inline-block;
+    background: #f0f2f5;
+    padding: 0 6px;
+    transition: .2s;
+    white-space: nowrap;
+    border-radius: 3px;
+    border: 1px solid #f0f2f5;
+    line-height: 30px;
+    text-align: left;
+}
+.meetmodify .device{
+    background: #f0f2f5;
+    padding: 9px;
+    display: block;
+    width: 100%;
+    border: none;
+}
+.meetmodify .box{
+    width:100%;
+    overflow: hidden;
+    border-top: none;
+    margin-top: 20px;
+    box-shadow:none;
+}
+.meetmodify .box-body{
+	float: left;
+}
+.meetmodify .table-bordered{
+	width:100%
+}
+.large-title{
+    font-size: 24px !important;
+}
+.button_ok{
+    margin: 30px;
+}
+.button_ok button{
+    background-color:rgba(74, 141, 191, 1);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    height: 30px;
+    /* width:50px */
+}
+.add_food{
+    display:none;
+}
+.food_info tbody:last-child .add_food{
+    display: block;
+}
+.food_info tbody{
+    border-bottom: 2px solid #8992b2 !important;
+}
+.room_info tbody{
+    border-bottom: 2px solid #8992b2 !important;
+}
+.part{
+     border-bottom: 2px solid #8992b2 !important;
+}
+.add_room{
+    display:none;
+}
+.room_info tbody:last-child .add_room{
+    display: block;
+}
+.add_meet{
+    display: none;
+}
+.meet_equipment_info>div:last-child .add_meet{
+    display: block !important;
+}
