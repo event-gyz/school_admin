@@ -13,7 +13,7 @@ class LoginForm extends Model
     public $username;
     public $password;
     public $rememberMe = true;
-    public $verifyCode;
+//    public $verifyCode;
 
     private $_user = false;
 
@@ -29,10 +29,10 @@ class LoginForm extends Model
             //['username', 'email'],
             ['password', 'required'],
             ['rememberMe', 'boolean'],
-            ['password', 'validatePassword'],
+//            ['password', 'validatePassword'],
 
             // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+//            ['verifyCode', 'captcha'],
         ];
     }
 
@@ -45,7 +45,7 @@ class LoginForm extends Model
             'user_id' => Yii::t('app', '用户ID'),
             'username' => Yii::t('app', 'Username'),
             'password' => Yii::t('app', 'Password'),
-            'verifyCode' => Yii::t('app', 'Verification Code'),
+//            'verifyCode' => Yii::t('app', 'Verification Code'),
 
         ];
     }
@@ -61,8 +61,6 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-
-
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, Yii::t('app', 'Incorrect username or password.'));
             }

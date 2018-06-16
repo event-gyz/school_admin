@@ -5,16 +5,17 @@ namespace app\controllers;
 use Yii;
 use app\models\Users;
 use app\models\UsersSearch;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * UsersController implements the CRUD actions for Users model.
  */
-class UsersController extends BController
+class UsersController extends Controller
 {
     /**
-     * @inheritdocin
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -35,10 +36,8 @@ class UsersController extends BController
     public function actionIndex()
     {
         $searchModel = new UsersSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams , $company_id);
-        $role = Yii::$app->user->identity->role;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         return $this->render('index', [
-            'role' => $role,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -51,15 +50,8 @@ class UsersController extends BController
      */
     public function actionView($id)
     {
-        $company_id = Yii::$app->user->identity->company_id;
-        $data = Company::find($company_id)->where('company_id='.$company_id)->asArray()->one();
-
-        $role = Yii::$app->user->identity->role;
         return $this->render('view', [
-            'info' => Yii::$app->user->identity,
-            'role' => $role,
             'model' => $this->findModel($id),
-            'company_name'=>$data['company_name']
         ]);
     }
 
@@ -70,31 +62,11 @@ class UsersController extends BController
      */
     public function actionCreate()
     {
-        $id = Yii::$app->user->identity->user_id;
         $model = new Users();
-        $model->setScenario('create');
-        $userInfo = $model::find()->where('user_id='.$id)->asArray()->all();
-        $model->role = 'operater';
-        if ($model->load(Yii::$app->request->post())) {
-            $model->company_id = 800067;
-            $model->create_time = time();
-            $model->mobile_num = ($model->mobile_num == NULL)?0:$model->mobile_num;
-            $model->role = $model->role;
-            if( $model->validate() ){
-                $model->password = password_hash ( $model->password,PASSWORD_DEFAULT);
-                if($model->save(false)){
-                    return $this->redirect(['view', 'id' => $model->user_id]);
-                }
-            }else{
-                //var_dump($model->getErrors());die();
-                $model->mobile_num = ($model->mobile_num == 0)?NULL:$model->mobile_num;
-                return $this->render('create', [
-                    'model' => $model,
-                ]);
-            }
 
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->uid]);
         } else {
-            //var_dump($model->getErrors());die();
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -110,19 +82,10 @@ class UsersController extends BController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->setScenario('update');
 
-        if ( $model->load(Yii::$app->request->post()) && $model->validate() ) {
-            if( empty( $model->password ) ){
-                unset( $model->password );
-            }else{
-                $model->password = password_hash ( $model->password,PASSWORD_DEFAULT);
-            }
-            if( $model->save(false) ){
-                return $this->redirect(['view', 'id' => $model->user_id]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->uid]);
         } else {
-            //var_dump($model->getErrors());die();
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -141,13 +104,6 @@ class UsersController extends BController
 
         return $this->redirect(['index']);
     }
-    //启用禁用
-    public function actionChangeStatus($status , $id)
-    {
-        $model = new Users();
-        $result = $model->ChangeStatus($status , $id);
-        return $this->redirect('index');
-    }
 
     /**
      * Finds the Users model based on its primary key value.
@@ -164,5 +120,4 @@ class UsersController extends BController
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-
 }

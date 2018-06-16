@@ -10,18 +10,32 @@ use app\models\Users;
 /**
  * UsersSearch represents the model behind the search form about `app\models\Users`.
  */
-class UsersSearch extends Users implements \yii\web\IdentityInterface
+class UsersSearch extends Users
 {
-    private $authKey;
-    public $username;
+    public static  $gender = [''=>'全部',0=>'男',1=>'女'];
+    public static  $index = [''=>'全部',1=>'偏高',2=>'偏低'];
+    public static  $index_buds = [''=>'全部',9=>'偏早',11=>'偏晚'];
+    public static  $index_type = [''=>'全部',3=>'强',2=>'中' ,1=>'弱'];
+
+    public $city;
+    public $agency_id;
+
+
+    public function allAgency(){
+        $all = Admin::find()->where(['type'=>3])->asArray()->all();
+        $allAgency = array_combine(array_column($all,'uid'),array_column($all,'username'));
+        $allAgency[0] = '全部';
+        ksort($allAgency);
+        return $allAgency;
+    }
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['user_id', 'mobile_num', 'create_time', 'status', 'company_id'], 'integer'],
-            [['real_name', 'email', 'password', 'job_num'], 'safe'],
+            [['uid', 'gender', 'supervisor_uid', 'buds_index'], 'integer'],
+            [['id', 'last_name', 'first_name','city', 'agency_id', 'nick_name', 'birth_day', 'image_url', 'type_0', 'type_1', 'type_2', 'type_3', 'type_4', 'type_5', 'weight_index', 'height_index'], 'safe'],
         ];
     }
 
@@ -44,18 +58,15 @@ class UsersSearch extends Users implements \yii\web\IdentityInterface
     public function search($params)
     {
         $query = Users::find();
-
+        $query->joinWith(['member']);
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination' => [
-                'pageSize' => 10,
-            ],
         ]);
-
+//        echo '<pre>';print_r($params);exit;
         $this->load($params);
-
+//        print_r($params);exit;
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
@@ -64,64 +75,97 @@ class UsersSearch extends Users implements \yii\web\IdentityInterface
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'user_id' => $this->user_id,
-            'mobile_num' => $this->mobile_num,
-            'create_time' => $this->create_time,
-            'status' => $this->status,
-            'company_id' => Yii::$app->user->identity->company_id,
-            'role' => $this->role,
+            'uid' => $this->uid,
+            'gender' => $this->gender,
+            'birth_day' => $this->birth_day,
+            'supervisor_uid' => $this->supervisor_uid,
+            'buds_index' => $this->buds_index,
         ]);
-
-        $query->andFilterWhere(['like', 'real_name', $this->real_name])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'password', $this->password])
-            ->andFilterWhere(['like', 'job_num', $this->job_num]);
-        return $dataProvider;
-    }
-
-    public function validatePassword($password) {
-        if (empty($this->password)) {
-            // 跳转到设置密码的页面
+        if(!empty($this->agency_id)){
+            $query->andFilterWhere(['member.agency_id' =>$this->agency_id]);
         }
-        //TODO 算法验证密码是否正确
-        return true;
-    }
-    /**
-     * @inheritdoc
-     */
-    public function getId()
-    {
-        return $this->user_id;
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function getAuthKey()
-    {
-        return $this->authKey;
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function validateAuthKey($authKey)
-    {
-        return $this->authKey === $authKey;
-    }
-    /**
-     * @inheritdoc
-     */
-    public static function findIdentity($id)
-    {
-        return new static(\Yii::$app->session['user_info']);
-    }
+        $query->andFilterWhere(['like', 'id', $this->id])
+            ->andFilterWhere(['like', 'last_name', $this->last_name])
+            ->andFilterWhere(['like', 'first_name', $this->first_name])
+            ->andFilterWhere(['like', 'nick_name', $this->nick_name])
+            ->andFilterWhere(['like', 'image_url', $this->image_url])
+            ->andFilterWhere(['like', 'member.city', $this->city]);
 
-    /**
-     * @inheritdoc
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        return new static(\Yii::$app->session['user_info']);
+
+        if($this->height_index == 1 ){
+            $query->andFilterWhere(['<', 'height_index', 90]);
+        }else if($this->height_index == 2){
+            $query->andFilterWhere(['>', 'height_index', 110]);
+        }
+
+        if($this->weight_index == 1 ){
+            $query->andFilterWhere(['<', 'weight_index', 90]);
+        }else if($this->weight_index == 2){
+            $query->andFilterWhere(['>', 'weight_index', 110]);
+        }
+
+        if($this->type_0 == 1 ){
+            $query->andFilterWhere(['<', 'type_0', 30]);
+        }else if($this->type_0 == 2){
+            $query->andFilterWhere(['<', 'type_0', 60]);
+            $query->andFilterWhere(['>=', 'type_0', 30]);
+        }else if($this->type_0 == 3){
+            $query->andFilterWhere(['<', 'type_0', 100]);
+            $query->andFilterWhere(['>=', 'type_0', 60]);
+        }
+
+        if($this->type_1 == 1 ){
+            $query->andFilterWhere(['<', 'type_1', 30]);
+        }else if($this->type_1 == 2){
+            $query->andFilterWhere(['<', 'type_1', 60]);
+            $query->andFilterWhere(['>=', 'type_1', 30]);
+        }else if($this->type_1 == 3){
+            $query->andFilterWhere(['<', 'type_1', 100]);
+            $query->andFilterWhere(['>=', 'type_1', 60]);
+        }
+
+        if($this->type_2 == 1 ){
+            $query->andFilterWhere(['<', 'type_2', 30]);
+        }else if($this->type_2 == 2){
+            $query->andFilterWhere(['<', 'type_2', 60]);
+            $query->andFilterWhere(['>=', 'type_2', 30]);
+        }else if($this->type_2 == 3){
+            $query->andFilterWhere(['<', 'type_2', 100]);
+            $query->andFilterWhere(['>=', 'type_2', 60]);
+        }
+
+        if($this->type_3 == 1 ){
+            $query->andFilterWhere(['<', 'type_3', 30]);
+        }else if($this->type_3 == 2){
+            $query->andFilterWhere(['<', 'type_3', 60]);
+            $query->andFilterWhere(['>=', 'type_3', 30]);
+        }else if($this->type_3 == 3){
+            $query->andFilterWhere(['<', 'type_3', 100]);
+            $query->andFilterWhere(['>=', 'type_3', 60]);
+        }
+
+        if($this->type_4 == 1 ){
+            $query->andFilterWhere(['<', 'type_4', 30]);
+        }else if($this->type_4 == 2){
+            $query->andFilterWhere(['<', 'type_4', 60]);
+            $query->andFilterWhere(['>=', 'type_4', 30]);
+        }else if($this->type_4 == 3){
+            $query->andFilterWhere(['<', 'type_4', 100]);
+            $query->andFilterWhere(['>=', 'type_4', 60]);
+        }
+
+        if($this->type_5 == 1 ){
+            $query->andFilterWhere(['<', 'type_5', 30]);
+        }else if($this->type_5 == 2){
+            $query->andFilterWhere(['<', 'type_5', 60]);
+            $query->andFilterWhere(['>=', 'type_5', 30]);
+        }else if($this->type_5 == 3){
+            $query->andFilterWhere(['<', 'type_5', 100]);
+            $query->andFilterWhere(['>=', 'type_5', 60]);
+        }
+
+        return $dataProvider;
     }
 }

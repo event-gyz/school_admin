@@ -39,6 +39,7 @@ class AppAsset extends AssetBundle
 		'plugins/daterangepicker/daterangepicker.js',
 		'plugins/jQuery/jquery.cookie.js',
         'js/app.min.js',
+        'js/jquery-1.8.2.js',
     ];
     //he
     public $depends = [

@@ -1,33 +1,31 @@
 <?php
 
 namespace app\models;
-use app\models\Company;
 
 class User extends \yii\base\Object implements \yii\web\IdentityInterface
 {
-    public $user_id;
-    public $real_name;
+    public $uid;
+    public $username;
+    public $first_name;
+    public $last_name;
+    public $password;
+    public $phone;
     public $email;
-    public $mobile_num;
+    public $city;
+    public $img;
+    public $type;
+    public $area;
+    public $type_of_cooperation;
     public $create_time;
     public $status;
-    public $job_num;
-    public $company_id;
-    public $role;
-    public $en_name;
-    public $department;
-    public $job_phone;
-    public $password;
     public $authKey;
-    public $accessToken;
-    public $dept_id;
 
     /**
      * @inheritdoc
      */
     public static function findIdentity($id)
     {
-        $user = Users::find()->where(['user_id' => $id])->asArray()->one();
+        $user = Admin::find()->where(['uid' => $id])->asArray()->one();
 
         if ($user) {
             return new static($user);
@@ -52,13 +50,8 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        $user = Users::find()->where(['email' => $username])->orWhere(['mobile_num' => $username])->asArray()->one();
-
+        $user = Admin::find()->where(['username' => $username])->orWhere(['phone' => $username])->asArray()->one();
         if ($user) {
-            $model = new Company();
-            $company = $model->getCompanyById($user['company_id'])->attributes;
-
-            \Yii::$app->session['company'] = $company;
 
             return new static($user);
         }
@@ -71,7 +64,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
      */
     public function getId()
     {
-        return $this->user_id;
+        return $this->uid;
     }
 
     /**

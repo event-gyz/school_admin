@@ -21,7 +21,7 @@ class Permission{
         
         
         $userInfo = Yii::$app->user->identity;
-        $permission = Yii::$app->params['permission'][$userInfo->role];
+        $permission = Yii::$app->params['permission'][$userInfo->type];
         
         if( 'basic' != $modules ){
             if( !isset( $permission[ $modules ] ) ){
