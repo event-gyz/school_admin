@@ -39,7 +39,7 @@ $this->title = '数据列表';
                         $birthday = new \DateTime($model->birth_day);
                         $diff = $birthday->diff(new \DateTime());
                         $months = $diff->format('%m') + 12 * $diff->format('%y');
-                        return sprintf("%.2f", $months/12);
+                        return sprintf("%.1f",substr(sprintf("%.3f", $months/12), 0, -2));
                     },
             ],
             [
