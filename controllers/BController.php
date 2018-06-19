@@ -12,7 +12,6 @@ use yii\web\Controller;
 
 class BController extends Controller
 {
-    public $company_id;
     public $user_id;
 
     public function __construct($id, $module, $config = []) {

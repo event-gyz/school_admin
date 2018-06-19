@@ -146,13 +146,14 @@ $menu = array(
 
                         <section class="w-f scrollable">
                             <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333">
+                                <h1 style="text-align: center;"><b><?php echo \Yii::$app->user->identity->username;?></b></h1>
                                 <!-- 左侧大导航 begin -->
                                 <nav class="nav-primary hidden-xs">
                                     <ul class="nav">
                                         <li class="active">
 <!--                                            --><?//= isActive($menu['admin']) ;?>
                                             <a href="">
-                                                <i class="fa fa-money icon">
+                                                <i class="fa fa-user icon">
                                                     <b class="bg-success"></b>
                                                 </i>
                                                 <span class="pull-right">
@@ -185,7 +186,7 @@ $menu = array(
                                         <li class="active">
 <!--                                        <li class="--><?//= isActive($menu['member']) ?><!--">-->
                                             <a href="">
-                                                <i class="fa fa-reply icon">
+                                                <i class="fa fa-database icon">
                                                     <b class="bg-success"></b>
                                                 </i>
                                                 <span class="pull-right">
