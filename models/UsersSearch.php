@@ -13,6 +13,7 @@ use app\models\Users;
 class UsersSearch extends Users
 {
     public static  $gender = [''=>'全部',0=>'男',1=>'女'];
+    public static  $age = [''=>'全部',1=>'0-1',2=>'1-2',3=>'2-3',4=>'3-4',5=>'4-5',6=>'5-6'];
     public static  $index = [''=>'全部',1=>'偏高',2=>'偏低'];
     public static  $index_buds = [''=>'全部',9=>'偏早',11=>'偏晚'];
     public static  $index_type = [''=>'全部',3=>'强',2=>'中' ,1=>'弱'];
@@ -82,7 +83,6 @@ class UsersSearch extends Users
         $query->andFilterWhere([
             'uid' => $this->uid,
             'gender' => $this->gender,
-            'birth_day' => $this->birth_day,
             'supervisor_uid' => $this->supervisor_uid,
             'buds_index' => $this->buds_index,
         ]);
@@ -117,7 +117,6 @@ class UsersSearch extends Users
         }
 
         if($this->type_0 == 1 ){
-            $query->andFilterWhere(['>', 'type_0', 0]);
             $query->andFilterWhere(['<', 'type_0', 30]);
         }else if($this->type_0 == 2){
             $query->andFilterWhere(['<', 'type_0', 60]);
@@ -128,7 +127,6 @@ class UsersSearch extends Users
         }
 
         if($this->type_1 == 1 ){
-            $query->andFilterWhere(['>', 'type_1', 0]);
             $query->andFilterWhere(['<', 'type_1', 30]);
         }else if($this->type_1 == 2){
             $query->andFilterWhere(['<', 'type_1', 60]);
@@ -139,7 +137,6 @@ class UsersSearch extends Users
         }
 
         if($this->type_2 == 1 ){
-            $query->andFilterWhere(['>', 'type_2', 0]);
             $query->andFilterWhere(['<', 'type_2', 30]);
         }else if($this->type_2 == 2){
             $query->andFilterWhere(['<', 'type_2', 60]);
@@ -150,7 +147,6 @@ class UsersSearch extends Users
         }
 
         if($this->type_3 == 1 ){
-            $query->andFilterWhere(['>', 'type_3', 0]);
             $query->andFilterWhere(['<', 'type_3', 30]);
         }else if($this->type_3 == 2){
             $query->andFilterWhere(['<', 'type_3', 60]);
@@ -161,7 +157,6 @@ class UsersSearch extends Users
         }
 
         if($this->type_4 == 1 ){
-            $query->andFilterWhere(['>', 'type_4', 0]);
             $query->andFilterWhere(['<', 'type_4', 30]);
         }else if($this->type_4 == 2){
             $query->andFilterWhere(['<', 'type_4', 60]);
@@ -172,7 +167,6 @@ class UsersSearch extends Users
         }
 
         if($this->type_5 == 1 ){
-            $query->andFilterWhere(['>', 'type_5', 0]);
             $query->andFilterWhere(['<', 'type_5', 30]);
         }else if($this->type_5 == 2){
             $query->andFilterWhere(['<', 'type_5', 60]);
@@ -182,6 +176,24 @@ class UsersSearch extends Users
             $query->andFilterWhere(['>=', 'type_5', 60]);
         }
 
+        if($this->birth_day == 1 ){
+            $query->andFilterWhere(['>=', 'birth_day', date('Y-m-d',strtotime("-1 year"))]);
+        }else if($this->birth_day == 2){
+            $query->andFilterWhere(['<', 'birth_day', date('Y-m-d',strtotime("-1 year"))]);
+            $query->andFilterWhere(['>=', 'birth_day', date('Y-m-d',strtotime("-2 year"))]);
+        }else if($this->birth_day == 3){
+            $query->andFilterWhere(['<', 'birth_day', date('Y-m-d',strtotime("-2 year"))]);
+            $query->andFilterWhere(['>=', 'birth_day', date('Y-m-d',strtotime("-3 year"))]);
+        }else if($this->birth_day == 4){
+            $query->andFilterWhere(['<', 'birth_day', date('Y-m-d',strtotime("-3 year"))]);
+            $query->andFilterWhere(['>=', 'birth_day', date('Y-m-d',strtotime("-4 year"))]);
+        }else if($this->birth_day == 5){
+            $query->andFilterWhere(['<', 'birth_day', date('Y-m-d',strtotime("-4 year"))]);
+            $query->andFilterWhere(['>=', 'birth_day', date('Y-m-d',strtotime("-5 year"))]);
+        }else if($this->birth_day == 6){
+            $query->andFilterWhere(['<', 'birth_day', date('Y-m-d',strtotime("-5 year"))]);
+            $query->andFilterWhere(['>=', 'birth_day', date('Y-m-d',strtotime("-6 year"))]);
+        }
         return $dataProvider;
 //        $sql=$query ->createCommand()->getRawSql();
 //        var_dump($sql);die;

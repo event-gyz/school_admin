@@ -27,6 +27,22 @@ $this->title = '数据列表';
                 'value'=>'member.city'
             ],
             [
+                'attribute' => 'age',
+                'label'=>'年龄',
+                'headerOptions' => ['style'=>'width:70px'],
+                'filter' => Html::activeDropDownList(
+                    $searchModel,
+                    'birth_day',
+                    $searchModel::$age,['class' => 'form-control']),
+                'value'=>
+                    function($model){
+                        $birthday = new \DateTime($model->birth_day);
+                        $diff = $birthday->diff(new \DateTime());
+                        $months = $diff->format('%m') + 12 * $diff->format('%y');
+                        return sprintf("%.2f", $months/12);
+                    },
+            ],
+            [
                 'attribute' => 'gender',
                 'label'=>'性别',
                 'headerOptions' => ['style'=>'width:70px'],
@@ -84,16 +100,8 @@ $this->title = '数据列表';
                     $searchModel::$index,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->height_index<90){
-                            return '偏低';
-                        }else if($model->height_index>110){
-                            return '偏高';
-                        }else if($model->height_index==100){
-                            return '暂无数据';
-                        }else{
-                            return '正常';
-                        }
-
+                        $height = \app\models\WapHeight::find()->where(['uid'=>$model->uid])->orderBy(['date' => SORT_DESC])->asArray()->one();
+                        return $height['height'];
                     },
             ],
 
@@ -107,15 +115,8 @@ $this->title = '数据列表';
                     $searchModel::$index,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->weight_index<90){
-                            return '偏低';
-                        }else if($model->weight_index>110){
-                            return '偏高';
-                        }else if($model->weight_index==100){
-                            return '暂无数据';
-                        }else{
-                            return '正常';
-                        }
+                        $weight = \app\models\WapWeight::find()->where(['uid'=>$model->uid])->orderBy(['date' => SORT_DESC])->asArray()->one();
+                        return $weight['weight'];
 
                     },
             ],
@@ -129,9 +130,7 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_0==0){
-                            return '暂无数据';
-                        }else if($model->type_0<30){
+                        if($model->type_0<30){
                             return '弱';
                         }else if($model->type_0<60){
                             return '中';
@@ -150,9 +149,7 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_1==0){
-                            return '暂无数据';
-                        }else if($model->type_1<30){
+                        if($model->type_1<30){
                             return '弱';
                         }else if($model->type_1<60){
                             return '中';
@@ -171,9 +168,7 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_2==0){
-                            return '暂无数据';
-                        }else if($model->type_2<30){
+                        if($model->type_2<30){
                             return '弱';
                         }else if($model->type_2<60){
                             return '中';
@@ -192,9 +187,7 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_3==0){
-                            return '暂无数据';
-                        }else if($model->type_3<30){
+                        if($model->type_3<30){
                             return '弱';
                         }else if($model->type_3<60){
                             return '中';
@@ -213,9 +206,7 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_4==0){
-                            return '暂无数据';
-                        }else if($model->type_4<30){
+                        if($model->type_4<30){
                             return '弱';
                         }else if($model->type_4<60){
                             return '中';
@@ -234,9 +225,7 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_5==0){
-                            return '暂无数据';
-                        }else if($model->type_5<30){
+                        if($model->type_5<30){
                             return '弱';
                         }else if($model->type_5<60){
                             return '中';
@@ -255,16 +244,8 @@ $this->title = '数据列表';
                     $searchModel::$index_buds,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->buds_index==9){
-                            return '偏早';
-                        }else if($model->buds_index==11){
-                            return '偏晚';
-                        }else if($model->buds_index==10){
-                            return '正常';
-                        }else{
-                            return '暂无数据';
-                        }
-
+                        $a = \app\models\WapBuds::find()->where(['uid'=>$model->supervisor_uid])->orderBy(['date' => SORT_ASC])->asArray()->one();
+                        return $a['date'];
                     },
             ],
 

@@ -34,6 +34,20 @@ $this->title = '合作商管理';
                 'format'=>'raw',
             ],
             'username',
+            [
+                'label'=>'推广链接',
+                'filter'=>false,
+                'attribute' => 'id',
+                'value' => function($model){
+                    if(!empty($model['uid'])){
+                        $url = Yii::$app->params['link']['colavia_url'];
+                        return "<a target='_blank' href='".$url."/cn/index.php?id=$model->uid'/>".$url."/cn/index.php?id=$model->uid</a>";
+                    }else{
+                        return '';
+                    }
+                },
+                'format'=>'raw',
+            ],
 
             [
                 'class' => 'yii\grid\ActionColumn',
