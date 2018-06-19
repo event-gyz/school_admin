@@ -117,6 +117,7 @@ class UsersSearch extends Users
         }
 
         if($this->type_0 == 1 ){
+            $query->andFilterWhere(['>', 'type_0', 0]);
             $query->andFilterWhere(['<', 'type_0', 30]);
         }else if($this->type_0 == 2){
             $query->andFilterWhere(['<', 'type_0', 60]);
@@ -127,6 +128,7 @@ class UsersSearch extends Users
         }
 
         if($this->type_1 == 1 ){
+            $query->andFilterWhere(['>', 'type_1', 0]);
             $query->andFilterWhere(['<', 'type_1', 30]);
         }else if($this->type_1 == 2){
             $query->andFilterWhere(['<', 'type_1', 60]);
@@ -137,6 +139,7 @@ class UsersSearch extends Users
         }
 
         if($this->type_2 == 1 ){
+            $query->andFilterWhere(['>', 'type_2', 0]);
             $query->andFilterWhere(['<', 'type_2', 30]);
         }else if($this->type_2 == 2){
             $query->andFilterWhere(['<', 'type_2', 60]);
@@ -147,6 +150,7 @@ class UsersSearch extends Users
         }
 
         if($this->type_3 == 1 ){
+            $query->andFilterWhere(['>', 'type_3', 0]);
             $query->andFilterWhere(['<', 'type_3', 30]);
         }else if($this->type_3 == 2){
             $query->andFilterWhere(['<', 'type_3', 60]);
@@ -157,6 +161,7 @@ class UsersSearch extends Users
         }
 
         if($this->type_4 == 1 ){
+            $query->andFilterWhere(['>', 'type_4', 0]);
             $query->andFilterWhere(['<', 'type_4', 30]);
         }else if($this->type_4 == 2){
             $query->andFilterWhere(['<', 'type_4', 60]);
@@ -167,6 +172,7 @@ class UsersSearch extends Users
         }
 
         if($this->type_5 == 1 ){
+            $query->andFilterWhere(['>', 'type_5', 0]);
             $query->andFilterWhere(['<', 'type_5', 30]);
         }else if($this->type_5 == 2){
             $query->andFilterWhere(['<', 'type_5', 60]);
