@@ -77,7 +77,7 @@ $config = [
 
     ],
     'params' => $params,
-    'defaultRoute'=>'/yrfp/yrfp/index'
+    'defaultRoute'=>'/site/index'
 ];
 
 if (YII_ENV_DEV) {
