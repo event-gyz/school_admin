@@ -172,7 +172,7 @@ $menu = array(
                                                     </a>
                                                 </li>
                                             </ul>
-                                            <?if(\Yii::$app->user->identity->type==1){?>
+                                            <?php if(\Yii::$app->user->identity->type==1){?>
                                             <ul class="nav lt">
                                                 <li>
                                                     <a href="<?=Url::to(['admin/index']);?>">
