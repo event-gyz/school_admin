@@ -129,7 +129,9 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_0<30){
+                        if($model->type_0==0){
+                            return '暂无数据';
+                        }else if($model->type_0<30){
                             return '弱';
                         }else if($model->type_0<60){
                             return '中';
@@ -148,7 +150,9 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_1<30){
+                        if($model->type_1==0){
+                            return '暂无数据';
+                        }else if($model->type_1<30){
                             return '弱';
                         }else if($model->type_1<60){
                             return '中';
@@ -167,7 +171,9 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_2<30){
+                        if($model->type_2==0){
+                            return '暂无数据';
+                        }else if($model->type_2<30){
                             return '弱';
                         }else if($model->type_2<60){
                             return '中';
@@ -186,7 +192,9 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_3<30){
+                        if($model->type_3==0){
+                            return '暂无数据';
+                        }else if($model->type_3<30){
                             return '弱';
                         }else if($model->type_3<60){
                             return '中';
@@ -205,7 +213,9 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_4<30){
+                        if($model->type_4==0){
+                            return '暂无数据';
+                        }else if($model->type_4<30){
                             return '弱';
                         }else if($model->type_4<60){
                             return '中';
@@ -224,7 +234,9 @@ $this->title = '数据列表';
                     $searchModel::$index_type,['class' => 'form-control']),
                 'value'=>
                     function($model){
-                        if($model->type_5<30){
+                        if($model->type_5==0){
+                            return '暂无数据';
+                        }else if($model->type_5<30){
                             return '弱';
                         }else if($model->type_5<60){
                             return '中';
