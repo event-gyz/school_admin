@@ -105,15 +105,15 @@ class UsersSearch extends Users
 
 
         if($this->height_index == 1 ){
-            $query->andFilterWhere(['<', 'height_index', 90]);
-        }else if($this->height_index == 2){
             $query->andFilterWhere(['>', 'height_index', 110]);
+        }else if($this->height_index == 2){
+            $query->andFilterWhere(['<', 'height_index', 90]);
         }
 
         if($this->weight_index == 1 ){
-            $query->andFilterWhere(['<', 'weight_index', 90]);
-        }else if($this->weight_index == 2){
             $query->andFilterWhere(['>', 'weight_index', 110]);
+        }else if($this->weight_index == 2){
+            $query->andFilterWhere(['<', 'weight_index', 90]);
         }
 
         if($this->type_0 == 1 ){
