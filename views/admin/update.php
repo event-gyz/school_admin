@@ -15,7 +15,13 @@ if(empty($model->type) || ($model->type == 3)){
 <div class="admin-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
+    <?php
+    if(empty($model->type) || ($model->type == 3)){
+    ?>
+        <h3>您的推广链接<a target="_blank" href="<?=Yii::$app->params['link']['colavia_url'].'/cn/index.php?id='.$model->uid?>"><?=Yii::$app->params['link']['colavia_url'].'/cn/index.php?id='.$model->uid?></a></h3>
+    <?php
+    }
+    ?>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

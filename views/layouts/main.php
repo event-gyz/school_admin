@@ -172,6 +172,7 @@ $menu = array(
                                                     </a>
                                                 </li>
                                             </ul>
+                                            <?if(\Yii::$app->user->identity->type==1){?>
                                             <ul class="nav lt">
                                                 <li>
                                                     <a href="<?=Url::to(['admin/index']);?>">
@@ -182,6 +183,7 @@ $menu = array(
                                                     </a>
                                                 </li>
                                             </ul>
+                                            <?php }?>
                                         </li>
                                         <li class="active">
 <!--                                        <li class="--><?//= isActive($menu['member']) ?><!--">-->

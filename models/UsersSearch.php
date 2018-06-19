@@ -22,9 +22,14 @@ class UsersSearch extends Users
 
 
     public function allAgency(){
-        $all = Admin::find()->where(['type'=>3])->asArray()->all();
-        $allAgency = array_combine(array_column($all,'uid'),array_column($all,'username'));
-        $allAgency[0] = '全部';
+
+        if(\Yii::$app->user->identity->type==1) {
+            $all = Admin::find()->where(['type'=>3])->asArray()->all();
+            $allAgency = array_combine(array_column($all,'uid'),array_column($all,'username'));
+            $allAgency[0] = '全部';
+        }else{
+            $allAgency = [];
+        }
         ksort($allAgency);
         return $allAgency;
     }
@@ -81,8 +86,13 @@ class UsersSearch extends Users
             'supervisor_uid' => $this->supervisor_uid,
             'buds_index' => $this->buds_index,
         ]);
-        if(!empty($this->agency_id)){
-            $query->andFilterWhere(['member.agency_id' =>$this->agency_id]);
+
+        if(\Yii::$app->user->identity->type==1) {
+            if (!empty($this->agency_id)) {
+                $query->andFilterWhere(['member.agency_id' => $this->agency_id]);
+            }
+        }else{
+            $query->andFilterWhere(['member.agency_id' => \Yii::$app->user->identity->uid]);
         }
 
 
