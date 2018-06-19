@@ -51,6 +51,9 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        if (\Yii::$app->user->isGuest) {
+            return $this->redirect('/site/login');
+        }
         return $this->render('index');
 
 
@@ -82,27 +85,6 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionLoginbak()
-    {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            echo "<script>window.parent.location.reload()</script>";
-            exit;
-            //return $this->goHome();
-        }
-
-        //替换布局文件
-        $this->layout = 'empty';
-
-        return $this->render('login_bak', [
-            'model' => $model,
-        ]);
-    }
-
     public function actionLogout()
     {
         if (isset($_GET['ref']) && $_GET['ref'] == 'gso') {
@@ -113,38 +95,7 @@ class SiteController extends Controller
         return $this->redirect('/site/login');
     }
 
-    public function actionDemo() {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goHome();
-        }
-
-        //替换布局文件
-        $this->layout = false;
-
-        return $this->render('demo', [
-            'model' => $model,
-        ]);
-    }
-
-    //语言切换
-    public function actionLanguage(){
-        $language=  \Yii::$app->request->get('lang');
-        if(isset($language)){
-            \Yii::$app->session['language']=$language;
-        }
-        //切换完语言哪来的返回到哪里
-        $this->goBack(\Yii::$app->request->headers['Referer']);
-    }
-
-
-    public function actionHelp(){
-        return $this->render('help');
-    }
 }
 
 
