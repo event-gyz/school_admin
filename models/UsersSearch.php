@@ -123,7 +123,7 @@ class UsersSearch extends Users
             $query->andFilterWhere(['<', 'type_0', 60]);
             $query->andFilterWhere(['>=', 'type_0', 30]);
         }else if($this->type_0 == 3){
-            $query->andFilterWhere(['<', 'type_0', 100]);
+            $query->andFilterWhere(['<=', 'type_0', 100]);
             $query->andFilterWhere(['>=', 'type_0', 60]);
         }
 
@@ -134,7 +134,7 @@ class UsersSearch extends Users
             $query->andFilterWhere(['<', 'type_1', 60]);
             $query->andFilterWhere(['>=', 'type_1', 30]);
         }else if($this->type_1 == 3){
-            $query->andFilterWhere(['<', 'type_1', 100]);
+            $query->andFilterWhere(['<=', 'type_1', 100]);
             $query->andFilterWhere(['>=', 'type_1', 60]);
         }
 
@@ -145,7 +145,7 @@ class UsersSearch extends Users
             $query->andFilterWhere(['<', 'type_2', 60]);
             $query->andFilterWhere(['>=', 'type_2', 30]);
         }else if($this->type_2 == 3){
-            $query->andFilterWhere(['<', 'type_2', 100]);
+            $query->andFilterWhere(['<=', 'type_2', 100]);
             $query->andFilterWhere(['>=', 'type_2', 60]);
         }
 
@@ -156,7 +156,7 @@ class UsersSearch extends Users
             $query->andFilterWhere(['<', 'type_3', 60]);
             $query->andFilterWhere(['>=', 'type_3', 30]);
         }else if($this->type_3 == 3){
-            $query->andFilterWhere(['<', 'type_3', 100]);
+            $query->andFilterWhere(['<=', 'type_3', 100]);
             $query->andFilterWhere(['>=', 'type_3', 60]);
         }
 
@@ -167,7 +167,7 @@ class UsersSearch extends Users
             $query->andFilterWhere(['<', 'type_4', 60]);
             $query->andFilterWhere(['>=', 'type_4', 30]);
         }else if($this->type_4 == 3){
-            $query->andFilterWhere(['<', 'type_4', 100]);
+            $query->andFilterWhere(['<=', 'type_4', 100]);
             $query->andFilterWhere(['>=', 'type_4', 60]);
         }
 
@@ -178,10 +178,12 @@ class UsersSearch extends Users
             $query->andFilterWhere(['<', 'type_5', 60]);
             $query->andFilterWhere(['>=', 'type_5', 30]);
         }else if($this->type_5 == 3){
-            $query->andFilterWhere(['<', 'type_5', 100]);
+            $query->andFilterWhere(['<=', 'type_5', 100]);
             $query->andFilterWhere(['>=', 'type_5', 60]);
         }
 
         return $dataProvider;
+//        $sql=$query ->createCommand()->getRawSql();
+//        var_dump($sql);die;
     }
 }
