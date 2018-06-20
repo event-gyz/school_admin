@@ -29,7 +29,7 @@ class LoginForm extends Model
             //['username', 'email'],
             ['password', 'required'],
             ['rememberMe', 'boolean'],
-//            ['password', 'validatePassword'],
+            ['password', 'validatePassword'],
 
             // verifyCode needs to be entered correctly
 //            ['verifyCode', 'captcha'],
@@ -43,8 +43,8 @@ class LoginForm extends Model
     {
         return [
             'user_id' => Yii::t('app', '用户ID'),
-            'username' => Yii::t('app', 'Username'),
-            'password' => Yii::t('app', 'Password'),
+            'username' => '用户名',
+            'password' => '密码',
 //            'verifyCode' => Yii::t('app', 'Verification Code'),
 
         ];
@@ -61,8 +61,12 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, Yii::t('app', 'Incorrect username or password.'));
+            if (!$user) {
+                $this->addError($attribute, '用户不存在');
+                return false;
+            }
+            if (!$user->validatePassword($this->password)) {
+                $this->addError($attribute, '密码错误');
             }
         }
     }
