@@ -28,7 +28,7 @@
                 </div>
                 <div class="password">
                     <i></i>
-                    <input type="password" id="loginform-password" class="password" name="LoginForm[password]" placeholder="密码" value="<?= $model->getIterator()['password'] ?>">
+                    <input type="password" id="loginform-password" name="LoginForm[password]" placeholder="密码" value="<?= $model->getIterator()['password'] ?>">
                 </div>
 
         <div class="remember_forget">

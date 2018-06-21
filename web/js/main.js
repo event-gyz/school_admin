@@ -132,26 +132,6 @@ function svgView(el,percentage) {
     // 写入页面
     document.querySelector(el).appendChild(svg);
 };
-// svgView('.data_total_chart', 76)
-// svgView('.new_membership_volume_chart', 45)
-// svgView('.average_activity_chart', 57)
-
-$(function(){
-	var html = '<p class="active">全部</p>';
-	for(var i = 0; i < provinceList.length; i++){
-		html += '<p data-index=' + i + '>'+ provinceList[i] +'</p>'
-	}
-	$('.province_list').html(html)
-})
-
-$('.province_list').on('click','p',function(){
-	var index = $(this).attr('data-index')
-	var html = '<p class="active">全部</p>';
-	for(var i = 0; i < cityList[index].length; i++){
-		html += '<p>'+ cityList[index][i] +'</p>'
-	}
-	$('.city_list').html(html)
-})
 
 function queryParams(){
 	var province = $('.province_list .active').html(),
@@ -170,33 +150,3 @@ function queryParams(){
 	tooth = $('.tooth_situation .active').html();
 	var query_name = $('.search_key').val();
 }
-
-$('.system_management p').click(function(){
-	$(this).siblings('ul').slideToggle()
-})
-
-$('.data_center p').click(function(){
-	$(this).siblings('ul').slideToggle()
-})
-
-$('.search p').click(function(){
-	$(this).siblings('ul').slideToggle()
-})
-
-$('.search').on('click','li',function(){
-	$(this).addClass('active').siblings('.active').removeClass('active')
-	$('.search_type').val($(this).html())
-	$(this).parent().slideUp()
-})
-
-$('.data_list').on('click','li>p',function(){
-	// $('.data_list li>div').hide()
-	$(this).parent('li').siblings('li').children('div').slideUp()
-	$(this).siblings('div').slideToggle()
-})
-
-$('.data_list').on('click','li>div>p',function(){
-	$(this).addClass('active').siblings('.active').removeClass('active')
-	$(this).parent().slideToggle()
-	var queryStr = $(this).html()
-})
