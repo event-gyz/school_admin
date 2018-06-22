@@ -41,7 +41,6 @@ $this->title = '数据列表';
                         <button>导出</button>
                         <span><?= Html::encode($this->title) ?></span>
                     </div>
-
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
@@ -49,9 +48,30 @@ $this->title = '数据列表';
                 //            ['class' => 'yii\grid\SerialColumn'],
                 //            'uid',
                             'nick_name',
+//                            [
+//                                'label'=>'省份',
+//                                'attribute'=>'province',
+//                                'value'=>'member.province'
+//
+//                            ],
                             [
+                                'attribute' => 'province',
+                                'label'=>'省份',
+                                'headerOptions' => ['style'=>'width:70px'],
+                                'filter' => Html::activeDropDownList(
+                                    $searchModel,
+                                    'province',
+                                    $searchModel->allProvince(),['class' => 'form-control']),
+                                'value'=>'member.province'
+                            ],
+                            [
+                                'attribute' => 'city',
                                 'label'=>'城市',
-                                'attribute'=>'city',
+                                'headerOptions' => ['style'=>'width:70px'],
+                                'filter' => Html::activeDropDownList(
+                                    $searchModel,
+                                    'city',
+                                    $searchModel->allCity($searchModel->province),['class' => 'form-control']),
                                 'value'=>'member.city'
                             ],
                             [

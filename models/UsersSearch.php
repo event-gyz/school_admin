@@ -19,10 +19,32 @@ class UsersSearch extends Users
     public static  $index_type = [''=>'全部',3=>'强',2=>'中' ,1=>'弱'];
 
     public $city;
+    public $province;
     public $cellphone;
     public $agency_id;
 
-
+    public function allProvince(){
+        $re = Member::find()->select(['province'])->distinct()->where(['<>','province',''])->asArray()->all();
+        if(!empty($re)){
+            $val = array_column($re,'province');
+            $allProvince = array_combine($val,$val);
+        }
+        $allProvince[0] = '全部';
+        return array_reverse($allProvince);
+    }
+    public function allCity($province_name=''){
+        if(!empty($province_name)){
+            $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->andWhere(['province'=>$province_name])->asArray()->all();
+        }else{
+            $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->asArray()->all();
+        }
+        if(!empty($re)){
+            $val = array_column($re,'city');
+            $allCity = array_combine($val,$val);
+        }
+        $allCity[0] = '全部';
+        return array_reverse($allCity);
+    }
     public function allAgency(){
 
         if(\Yii::$app->user->identity->type==1) {
@@ -42,7 +64,7 @@ class UsersSearch extends Users
     {
         return [
             [['uid', 'gender', 'supervisor_uid', 'buds_index'], 'integer'],
-            [['id', 'last_name', 'first_name','city', 'agency_id', 'birth_day', 'image_url', 'type_0', 'type_1', 'type_2', 'type_3', 'type_4', 'type_5', 'weight_index', 'height_index','cellphone'], 'safe'],
+            [['id', 'last_name', 'first_name','city','province', 'agency_id', 'birth_day', 'image_url', 'type_0', 'type_1', 'type_2', 'type_3', 'type_4', 'type_5', 'weight_index', 'height_index','cellphone'], 'safe'],
         ];
     }
 
@@ -102,9 +124,13 @@ class UsersSearch extends Users
             ->andFilterWhere(['like', 'first_name', $this->first_name])
             ->andFilterWhere(['like', 'nick_name', $this->nick_name])
             ->andFilterWhere(['like', 'image_url', $this->image_url])
-            ->andFilterWhere(['like', 'member.city', $this->city])
             ->andFilterWhere(['like','member.cellphone',$this->cellphone]);
-
+        if(!empty($this->province)){
+            $query->andFilterWhere(['like', 'member.province', $this->province]);
+        }
+        if(!empty($this->city)){
+            $query->andFilterWhere(['like', 'member.city', $this->city]);
+        }
 
         if($this->height_index == 1 ){
             $query->andFilterWhere(['>', 'height_index', 110]);
