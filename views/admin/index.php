@@ -14,6 +14,8 @@ $this->title = '合作商管理';
         <p>
             <span><?= Html::encode($this->title) ?></span>
             <a class="add_partner" href="javascript:void(0)">添加</a>
+
+<!--            --><?//= Html::a('添加', ['create'], ['class' => 'add_partner']) ?>
         </p>
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
@@ -35,30 +37,20 @@ $this->title = '合作商管理';
                 [
                     'label'=>'名称',
                     'filter'=>false,
-                    'value' => function($model){
-                        if(!empty($model['username'])){
-                            $url = Yii::$app->params['link']['colavia_url'];
-                            return $model['username'];
-                        }else{
-                            return '';
-                        }
-                    },
+                    'attribute' => 'username',
                     'format'=>'raw',
                 ],
                 [
                     'label'=>'合作类型',
                     'filter'=>false,
-                    'value' => function($model){
-                        return '巴布豆';
-                    },
+                    'attribute' => 'type_of_cooperation',
                     'format'=>'raw',
                 ],
                 [
                     'label'=>'地区',
                     'filter'=>false,
-                    'value' => function($model){
-                        return '北京';
-                    },
+                    'attribute' => 'area',
+
                     'format'=>'raw',
                 ],
                 [
@@ -77,7 +69,7 @@ $this->title = '合作商管理';
                 ],
                 [
                     'class' => 'yii\grid\ActionColumn',
-                    'template' => '{update} {delete}',
+                    'template' => '{update}',
                     'buttons' => [
                         'view' => function($url, $model, $key) {
                             return Html::a('查看', $url);
@@ -93,6 +85,7 @@ $this->title = '合作商管理';
                             ];
                             return Html::a('删除', $url, $options);
                         }
+
                     ],
                     'headerOptions'=>['class' => 'text-center','style'=>'10%'],
                     'header' => Yii::t('app', ''),
@@ -108,22 +101,26 @@ $this->title = '合作商管理';
         <div class="add_partner_manage">
             <p>添加合作商</p>
             <div class="partner_manage_form">
-                <div class="img_upload">
-                    <p>
-                        <img class="partner_img" src="" alt="">
-                        <img class="defaule_img" src="../images/gogo-star.png" alt="">
-                        <input class="upload_file"
-                               ref="input"
-                               type="file"
-                               accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg"
-                        >
-                    </p>
-                    <span>(点击图片，重新上传)</span>
-                    <input class="partner_name" type="text" placeholder="名称">
-                    <input class="partner_type" type="text" placeholder="合作类型">
-                    <input class="partner_address" type="text" placeholder="地区">
-                    <button class="partner_manage_sub">提交</button>
-                </div>
+                <form action="/admin/add" method="post" enctype="multipart/form-data">
+                    <div class="img_upload">
+                        <p>
+                            <img class="partner_img" src="" alt="">
+                            <img class="defaule_img" src="../images/gogo-star.png" alt="">
+                            <input class="upload_file"
+                                   ref="input"
+                                   type="file"
+                                   name="file"
+                                   accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg"
+                            >
+                        </p>
+                        <span>(点击图片，重新上传)</span>
+                        <input class="partner_name" type="text" name="username" placeholder="名称">
+                        <input class="partner_name" type="text" name="password" placeholder="登录密码">
+                        <input class="partner_type" type="text" name="type_of_cooperation" placeholder="合作类型">
+                        <input class="partner_address" type="text" name="area" placeholder="地区">
+                        <button class="partner_manage_sub">提交</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

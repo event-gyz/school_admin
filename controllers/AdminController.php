@@ -9,12 +9,14 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use app\library\FileUpload;
 
 /**
  * AdminController implements the CRUD actions for Admin model.
  */
 class AdminController extends BController
 {
+    public $enableCsrfValidation = false;
     /**
      * @inheritdoc
      */
@@ -24,7 +26,7 @@ class AdminController extends BController
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['GET'],
                 ],
             ],
         ];
@@ -96,7 +98,42 @@ class AdminController extends BController
             ]);
         }
     }
+    public function actionAdd(){
+        $model = new Admin();
+        $data = Yii::$app->request->post();
+        $file = $_FILES['file'];
+        if(empty($file)){
+            echo '头像不能为空';
+        }
+        $picurl = $this->ceanza_upload("file");
+        $arr = explode('/',$picurl);
+        $picurl = '/uploads/'.end($arr);
+        $picurl = str_replace('"','',$picurl);
+        $model->img = $picurl;
+        $model->username = $data['username'];
+        $model->password = $data['password'];
+        $model->type_of_cooperation = $data['type_of_cooperation'];
+        $model->area = $data['area'];
+        $model->save();
+        return $this->redirect(['index']);
+//        echo json_encode();
+    }
+    public function ceanza_upload($name = "file"){
+        $up = new FileUpload;
+        //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+        $up -> set("path", "../web/uploads/");
+        $up -> set("maxsize", 32000000);
+        $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+        $up -> set("israndname", false);
 
+        //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
+        if($up -> upload($name)) {
+            return json_encode($up->getFileName());
+        } else {
+            die("文件上传失败");
+            //$up->getErrorMsg()
+        }
+    }
     /**
      * Updates an existing Admin model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -106,19 +143,27 @@ class AdminController extends BController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        if ($model->load(Yii::$app->request->post())) {
-            $imageUploadFile =   UploadedFile::getInstance($model,'img');
-            if($imageUploadFile != null ){
-                $saveUrl = $this->qiniu($imageUploadFile);
-                $model->img = $saveUrl;
+        if (Yii::$app->request->post()) {
+            $data = Yii::$app->request->post();
+            $file = $_FILES['file'];
+            if(!empty($file['name'])){
+                $picurl = $this->ceanza_upload("file");
+                $arr = explode('/',$picurl);
+                $picurl = '/uploads/'.end($arr);
+                $picurl = str_replace('"','',$picurl);
+                $model->img = $picurl;
+            }
+            $model->username = $data['username'];
+            $model->password = $data['password'];
+            if(isset($data['type_of_cooperation']) && !empty($data['type_of_cooperation'])){
+                $model->type_of_cooperation = $data['type_of_cooperation'];
+            }
+            if(isset($data['area']) && !empty($data['area'])){
+                $model->area = $data['area'];
             }
 
             $model->save();
-            if($model->type==1){
-                return $this->redirect(['update', 'id' => $model->uid]);
-            }else{
-                return $this->redirect(['index']);
-            }
+            return $this->redirect(['update', 'id' => $model->uid]);
 
         } else {
             return $this->render('update', [

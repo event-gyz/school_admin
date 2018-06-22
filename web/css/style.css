@@ -64,7 +64,7 @@ img{
 .search ul li.active{background:#FFF;color:#5BC94B;border-top: 1px solid #5BC94B;box-sizing: border-box;}
 .search_content .search_type{float: right;margin-right: 45px;margin-top: 24px;width:172px;height:40px;border:1px solid #CFCFCF;border-radius: 20px;text-align: center;outline: none;background:#FFF;cursor: pointer;}
 .search i{position: absolute;width:10px;height:6px;background: url('../images/drop_down.png') no-repeat;top:42px;right:60px;}
-.search_content>p{float: right;width:40px;height:40px;background: #2ECC71 url('../images/search.png') no-repeat center center;background-size: 16px 16px;margin-top:24px;margin-right: 8px;border-radius: 50%;cursor: pointer;}
+.search_content button{float: right;width:40px;height:40px;background: #2ECC71 url('../images/search.png') no-repeat center center;background-size: 16px 16px;margin-top:24px;margin-right: 8px;border-radius: 50%;cursor: pointer;}
 .manage_container{display:none;height:630px;border-top: 1px solid #DBDEDE;padding:20px 20px 19px;box-sizing: border-box;background:#EDF0F0;}
 
 .main_account_manage,.partner_account,.partner_manage{width:1045px;height:590px;background: #fff;margin:20px 18px;box-sizing: border-box;}

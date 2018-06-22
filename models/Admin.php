@@ -19,6 +19,7 @@ use Yii;
  * @property string $type_of_cooperation
  * @property integer $status
  * @property string $city
+ * @property string $area
  * @property string $create_time
  */
 class Admin extends \yii\db\ActiveRecord
@@ -37,13 +38,10 @@ class Admin extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password',  'phone'], 'required'],
-            [['type', 'status'], 'integer'],
+            [['username', 'password'], 'required'],
             [['create_time'], 'safe'],
             [['username','type_of_cooperation','area','img'], 'string', 'max' => 100],
             [['password'], 'string', 'max' => 128],
-            [['phone'], 'string', 'max' => 20],
-            [['email'], 'string', 'max' => 50],
         ];
     }
 

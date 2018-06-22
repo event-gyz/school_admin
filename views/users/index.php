@@ -10,37 +10,23 @@ use yii\grid\GridView;
 $this->title = '数据列表';
 ?>
 <ul class="data_active">
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
     <li class="data_total">
         <div class="data_size">
             <p>数据总量</p>
-            <b>7800</b>
-        </div>
-        <div class="activity">
-            <span>活跃度</span>
-            <p class="data_total_chart"></p>
-            <span>76%</span>
+            <b><?=$statistice['all']?></b>
         </div>
     </li>
     <li class="new_membership_volume">
         <div class="data_size">
             <p>新增会员量</p>
-            <b>567</b>
-        </div>
-        <div class="activity">
-            <span>活跃度</span>
-            <p class="new_membership_volume_chart"></p>
-            <span>45%</span>
+            <b><?=$statistice['new']?></b>
         </div>
     </li>
     <li class="average_activity">
         <div class="data_size">
-            <p>平均活跃度</p>
-            <b>276</b>
-        </div>
-        <div class="activity">
-            <span>活跃度</span>
-            <p class="average_activity_chart"></p>
-            <span>57%</span>
+            <p>活跃度</p>
+            <b><?=$statistice['ative']?></b>
         </div>
     </li>
 </ul>
@@ -52,287 +38,9 @@ $this->title = '数据列表';
                 <div class="users-index" style="width: 100%;  overflow-x: scroll; overflow-y: hidden;white-space: nowrap; ">
 
                     <div class="data_search">
-                        <button>PDF</button>
-                        <button>打印</button>
-                        <p>
-                            <input class="search_key" type="text">
-                            <i></i>
-                        </p>
+                        <button>导出</button>
                         <span><?= Html::encode($this->title) ?></span>
                     </div>
-                    <!-- <div class="data_list">
-                        <ol>
-                            <li>
-                                <ul>
-                                    <li>宝贝</li>
-                                    <li>
-                                        <p><input type="text" value="省"><i></i></p>
-                                        <div class="province_list">
-                                            <p class="active">全部</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="市"><i></i></p>
-                                        <div class="city_list">
-                                            <p class="active">全部</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="年龄"><i></i></p>
-                                        <div class="old_list">
-                                            <p class="active">全部</p>
-                                            <p>1-2</p>
-                                            <p>2-3</p>
-                                            <p>3-4</p>
-                                            <p>4-5</p>
-                                            <p>5-6</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="性别"><i></i></p>
-                                        <div class="gender_type">
-                                            <p class="active">全部</p>
-                                            <p>男</p>
-                                            <p>女</p>
-                                        </div>
-                                    </li>
-                                    <li>电话</li>
-                                    <li>微信号</li>
-                                    <li>
-                                        <p><input type="text" value="来源"><i></i></p>
-                                        <div class="source_type">
-                                            <p class="active">全部</p>
-                                            <p>巴布豆</p>
-                                            <p>宝贝星球</p>
-                                            <p>雀巢</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="身高"><i></i></p>
-                                        <div class="height_type">
-                                            <p class="active">全部</p>
-                                            <p>偏高</p>
-                                            <p>偏低</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="体重"><i></i></p>
-                                        <div class="weight_type">
-                                            <p class="active">全部</p>
-                                            <p>偏高</p>
-                                            <p>偏低</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="语言"><i></i></p>
-                                        <div class="language_ability">
-                                            <p class="active">全部</p>
-                                            <p>强</p>
-                                            <p>中</p>
-                                            <p>弱</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="人格"><i></i></p>
-                                        <div class="personality_ability">
-                                            <p class="active">全部</p>
-                                            <p>强</p>
-                                            <p>中</p>
-                                            <p>弱</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="大动作"><i></i></p>
-                                        <div class="big_action_ability">
-                                            <p class="active">全部</p>
-                                            <p>强</p>
-                                            <p>中</p>
-                                            <p>弱</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="小动作"><i></i></p>
-                                        <div class="small_action_ability">
-                                            <p class="active">全部</p>
-                                            <p>强</p>
-                                            <p>中</p>
-                                            <p>弱</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="认知"><i></i></p>
-                                        <div class="cognitive_ability">
-                                            <p class="active">全部</p>
-                                            <p>强</p>
-                                            <p>中</p>
-                                            <p>弱</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="自我帮助"><i></i></p>
-                                        <div class="self_help_ability">
-                                            <p class="active">全部</p>
-                                            <p>强</p>
-                                            <p>中</p>
-                                            <p>弱</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p><input type="text" value="牙齿"><i></i></p>
-                                        <div class="tooth_situation">
-                                            <p class="active">全部</p>
-                                            <p>偏早</p>
-                                            <p>偏晚</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>光头强</li>
-                                    <li>北京</li>
-                                    <li>是</li>
-                                    <li>5</li>
-                                    <li>男</li>
-                                    <li>13000000000</li>
-                                    <li>fdfdf</li>
-                                    <li>巴布豆</li>
-                                    <li>偏高</li>
-                                    <li>偏低</li>
-                                    <li>中</li>
-                                    <li>中</li>
-                                    <li>强</li>
-                                    <li>弱</li>
-                                    <li>中</li>
-                                    <li>弱</li>
-                                    <li>偏早</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>光头强</li>
-                                    <li>北京</li>
-                                    <li>是</li>
-                                    <li>5</li>
-                                    <li>男</li>
-                                    <li>13000000000</li>
-                                    <li>fdfdf</li>
-                                    <li>巴布豆</li>
-                                    <li>偏高</li>
-                                    <li>偏低</li>
-                                    <li>中</li>
-                                    <li>中</li>
-                                    <li>强</li>
-                                    <li>弱</li>
-                                    <li>中</li>
-                                    <li>弱</li>
-                                    <li>偏早</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>光头强</li>
-                                    <li>北京</li>
-                                    <li>是</li>
-                                    <li>5</li>
-                                    <li>男</li>
-                                    <li>13000000000</li>
-                                    <li>fdfdf</li>
-                                    <li>巴布豆</li>
-                                    <li>偏高</li>
-                                    <li>偏低</li>
-                                    <li>中</li>
-                                    <li>中</li>
-                                    <li>强</li>
-                                    <li>弱</li>
-                                    <li>中</li>
-                                    <li>弱</li>
-                                    <li>偏早</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>光头强</li>
-                                    <li>北京</li>
-                                    <li>是</li>
-                                    <li>5</li>
-                                    <li>男</li>
-                                    <li>13000000000</li>
-                                    <li>fdfdf</li>
-                                    <li>巴布豆</li>
-                                    <li>偏高</li>
-                                    <li>偏低</li>
-                                    <li>中</li>
-                                    <li>中</li>
-                                    <li>强</li>
-                                    <li>弱</li>
-                                    <li>中</li>
-                                    <li>弱</li>
-                                    <li>偏早</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <ul>
-                                    <li>光头强</li>
-                                    <li>北京</li>
-                                    <li>是</li>
-                                    <li>5</li>
-                                    <li>男</li>
-                                    <li>13000000000</li>
-                                    <li>fdfdf</li>
-                                    <li>巴布豆</li>
-                                    <li>偏高</li>
-                                    <li>偏低</li>
-                                    <li>中</li>
-                                    <li>中</li>
-                                    <li>强</li>
-                                    <li>弱</li>
-                                    <li>中</li>
-                                    <li>弱</li>
-                                    <li>偏早</li>
-                                </ul>
-                            </li>
-                        </ol>
-                    </div>
-                    <div class="page_size">
-                        <p>
-                            <span>共200条记录</span>
-                            <span>共40页</span>
-                            <span>每页</span>
-                            <select name="" id="">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5" selected>5</option>
-                            </select>
-                            <span>条记录</span>
-                            <span>当前1/1页</span>
-                        </p>
-                        <div class="paging">
-                            <a href="#" class="first">首页</a>
-                            <a href="#" class="prev">上一页</a>
-                            <a href="#" class="next">下一页</a>
-                            <a href="#" class="last">尾页</a>
-                        </div>
-                        <p>
-                            <span>转到</span>
-                            <select name="" id="">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                            <span>页</span>
-                        </p>
-                    </div> -->
-                    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,

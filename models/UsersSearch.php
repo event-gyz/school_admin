@@ -19,6 +19,7 @@ class UsersSearch extends Users
     public static  $index_type = [''=>'全部',3=>'强',2=>'中' ,1=>'弱'];
 
     public $city;
+    public $cellphone;
     public $agency_id;
 
 
@@ -41,7 +42,7 @@ class UsersSearch extends Users
     {
         return [
             [['uid', 'gender', 'supervisor_uid', 'buds_index'], 'integer'],
-            [['id', 'last_name', 'first_name','city', 'agency_id', 'nick_name', 'birth_day', 'image_url', 'type_0', 'type_1', 'type_2', 'type_3', 'type_4', 'type_5', 'weight_index', 'height_index'], 'safe'],
+            [['id', 'last_name', 'first_name','city', 'agency_id', 'birth_day', 'image_url', 'type_0', 'type_1', 'type_2', 'type_3', 'type_4', 'type_5', 'weight_index', 'height_index','cellphone'], 'safe'],
         ];
     }
 
@@ -101,7 +102,8 @@ class UsersSearch extends Users
             ->andFilterWhere(['like', 'first_name', $this->first_name])
             ->andFilterWhere(['like', 'nick_name', $this->nick_name])
             ->andFilterWhere(['like', 'image_url', $this->image_url])
-            ->andFilterWhere(['like', 'member.city', $this->city]);
+            ->andFilterWhere(['like', 'member.city', $this->city])
+            ->andFilterWhere(['like','member.cellphone',$this->cellphone]);
 
 
         if($this->height_index == 1 ){

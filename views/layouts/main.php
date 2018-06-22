@@ -161,22 +161,7 @@ $menu = array(
                         </div>
                         <!-- 公用左侧导航  end-->
                         <div class="manage_content">
-                            <div class="search_content">
-                                <!-- <a href="/site/logout">退出</a> -->
-                                <div class="search">
-                                    <p>
-                                        <input class="search_type" type="text" placeholder="全部数据" disabled>
-                                        <i></i>
-                                    </p>
-                                    <ul>
-                                        <li class="active">全部数据</li>
-                                        <li>巴布豆成长日记</li>
-                                        <li>宝贝成长日记</li>
-                                        <li>雀巢成长日记</li>
-                                    </ul>
-                                </div>
-                                <p></p>
-                            </div>
+                            
                             <div class="data_container">
                                 <?= $content ?>
                             </div>

@@ -21,45 +21,59 @@ if(empty($model->type) || ($model->type == 3)){
             <div class="partner_account_manage">
                 <p>宝贝星球</p>
                 <div class="partner_account_eqit">
-                    <p>
-                        <img class="defaule_img" src="../images/gogo-star.png" alt="">
-                    </p>
-                    <input class="account" type="text" placeholder="someone">
-                    <input class="pwd" type="password" placeholder="Password">
-                    <button class="partner_account_sub">提交</button>
+                    <form action="/admin/update?id=<?=$model->uid?>" method="post" enctype="multipart/form-data">
+<!--                        <img class="defaule_img"  src="" alt="" style="width:40px;height:40px">-->
+<!--                        <input type="file" name="file" accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg" name="file">-->
+                        <img class="partner_img" src="" alt="">
+                        <img class="defaule_img" src="<?= $model->img?>" alt="" style="width:40px;height:40px">
+                        <input class="upload_file"
+                               ref="input"
+                               type="file"
+                               name="file"
+                               accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg"
+                        >
+                        <input class="account" name="username" type="text" value="<?= $model->username; ?>" placeholder="登录名">
+                        <input class="pwd" type="text" name="password" value="<?= $model->password; ?>" placeholder="密码">
+                        <input class="account" type="text" name="type_of_cooperation" value="<?= $model->type_of_cooperation; ?>" placeholder="合作方式">
+                        <input class="account" type="text" name="area" value="<?= $model->area; ?>" placeholder="区域">
+                        <button class="partner_account_sub">提交</button>
+                    </form>
                 </div>
             </div>
             <div class="partner_account_list">
                 <p><?= Html::encode($this->title) ?></p>
+                <?php
+                    $info = \app\models\Admin::find()->where(['type'=>3])->andWhere(['not in','uid',$model->uid])->asArray()->all();
+
+                ?>
                 <table>
                     <thead>
                         <tr>
                             <th></th>
                             <th>名称</th>
-                            <th>账号</th>
                             <th>密码</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <p><img src="../images/logo.png" alt=""></p>
-                            </td>
-                            <td>巴布豆</td>
-                            <td>bobdog</td>
-                            <td>bobdog2018</td>
-                            <td><a href="#">编辑</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p><img src="../images/nestle.png" alt=""></p>
-                            </td>
-                            <td>雀巢</td>
-                            <td>nestle</td>
-                            <td>nestle2018</td>
-                            <td><a href="#">编辑</a></td>
-                        </tr>
+                        <?php
+                        foreach($info as $value){
+
+                        ?>
+                            <tr>
+                                <td>
+                                    <p><img src="<?= $value['img']?>" alt=""></p>
+                                </td>
+                                <td><?= $value['username']?></td>
+                                <td><?= $value['password']?></td>
+                                <td><a href="/admin/update?id=<?=$value['uid'];?>">编辑</a></td>
+                            </tr>
+                            <?php
+                        }
+
+                        ?>
+
+
                     </tbody>
                 </table>
             </div>
@@ -70,21 +84,21 @@ if(empty($model->type) || ($model->type == 3)){
         <div class="main_account_manage">
             <p><?= Html::encode($this->title) ?></p>
             <div class="main_account_eqit">
-                <div class="img_upload">
-                    <p>
-                        <img class="designated_img" src="" alt="">
-                        <img class="defaule_img" src="../images/gogo-star.png" alt="">
-                        <input class="upload_file"
-                               ref="input"
-                               type="file"
-                               accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg"
-                        >
-                    </p>
-                    <span>(点击图片，重新上传)</span>
-                </div>
-                <input class="account" type="text" placeholder="someone">
-                <input class="pwd" type="password" placeholder="Password">
-                <button class="main_account_sub">提交</button>
+                <form action="/admin/update?id=<?=$model->uid?>" method="post" enctype="multipart/form-data">
+                    <!--                        <img class="defaule_img"  src="" alt="" style="width:40px;height:40px">-->
+                    <!--                        <input type="file" name="file" accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg" name="file">-->
+                    <img class="partner_img" src="" alt="">
+                    <img class="defaule_img" src="<?= $model->img?>" alt="" style="width:40px;height:40px">
+                    <input class="upload_file"
+                           ref="input"
+                           type="file"
+                           name="file"
+                           accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg"
+                    >
+                    <input class="account" name="username" type="text" value="<?= $model->username; ?>" placeholder="登录名">
+                    <input class="pwd" type="text" name="password" value="<?= $model->password; ?>" placeholder="密码">
+                    <button class="partner_account_sub">提交</button>
+                </form>
             </div>
         </div>
     <?php
