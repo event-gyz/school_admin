@@ -38,7 +38,8 @@ $this->title = '数据列表';
                 <div class="users-index" style="width: 100%;  overflow-x: scroll; overflow-y: hidden;white-space: nowrap; ">
 
                     <div class="data_search">
-                        <button>导出</button>
+                            <a class="btn btn-sm btn-success" id="excel" href="/users/export-data?params=<?= base64_encode(json_encode($_GET)) ?>
+" target="_blank">导出</a>
                         <span><?= Html::encode($this->title) ?></span>
                     </div>
                     <?= GridView::widget([
@@ -309,9 +310,6 @@ $this->title = '数据列表';
     <?php $this->endBody() ?>
 </div>
 <script>
-    svgView('.data_total_chart', 76)
-    svgView('.new_membership_volume_chart', 45)
-    svgView('.average_activity_chart', 57)
     $(function(){
         var html = '<p class="active">全部</p>';
         for(var i = 0; i < provinceList.length; i++){
@@ -339,4 +337,15 @@ $this->title = '数据列表';
         $(this).parent().slideToggle()
         var queryStr = $(this).html()
     })
+    $("#excel").click(function(){
+        $.ajax({
+            type: 'POST',
+            url: '/users/export-data',
+            data: {params:<?= json_encode($_GET)?>},
+            dataType: 'html',
+            success: function (data) {
+
+            },
+        });
+    });
 </script>
