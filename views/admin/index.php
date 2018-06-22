@@ -14,8 +14,6 @@ $this->title = '合作商管理';
         <p>
             <span><?= Html::encode($this->title) ?></span>
             <a class="add_partner" href="javascript:void(0)">添加</a>
-
-<!--            --><?//= Html::a('添加', ['create'], ['class' => 'add_partner']) ?>
         </p>
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
@@ -104,8 +102,17 @@ $this->title = '合作商管理';
                 <form action="/admin/add" method="post" enctype="multipart/form-data">
                     <div class="img_upload">
                         <p>
-                            <img class="partner_img" src="" alt="">
+                            <?php
+                            if(empty($model->img)){
+                            ?>
                             <img class="defaule_img" src="../images/gogo-star.png" alt="">
+                            <?php
+                            }else{
+                            ?>
+                            <img class="partner_img" src="<?= $model->img?>" alt="">
+                            <?php
+                            }
+                            ?>
                             <input class="upload_file"
                                    ref="input"
                                    type="file"
@@ -114,12 +121,12 @@ $this->title = '合作商管理';
                             >
                         </p>
                         <span>(点击图片，重新上传)</span>
-                        <input class="partner_name" type="text" name="username" placeholder="名称">
-                        <input class="partner_name" type="text" name="password" placeholder="登录密码">
-                        <input class="partner_type" type="text" name="type_of_cooperation" placeholder="合作类型">
-                        <input class="partner_address" type="text" name="area" placeholder="地区">
-                        <button class="partner_manage_sub">提交</button>
                     </div>
+                    <input class="partner_name" type="text" name="username" placeholder="名称">
+                    <input class="partner_name" type="text" name="password" placeholder="登录密码">
+                    <input class="partner_type" type="text" name="type_of_cooperation" placeholder="合作类型">
+                    <input class="partner_address" type="text" name="area" placeholder="地区">
+                    <button class="partner_manage_sub">提交</button>
                 </form>
             </div>
         </div>

@@ -24,14 +24,28 @@ if(empty($model->type) || ($model->type == 3)){
                     <form action="/admin/update?id=<?=$model->uid?>" method="post" enctype="multipart/form-data">
 <!--                        <img class="defaule_img"  src="" alt="" style="width:40px;height:40px">-->
 <!--                        <input type="file" name="file" accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg" name="file">-->
-                        <img class="partner_img" src="" alt="">
-                        <img class="defaule_img" src="<?= $model->img?>" alt="" style="width:40px;height:40px">
-                        <input class="upload_file"
-                               ref="input"
-                               type="file"
-                               name="file"
-                               accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg"
-                        >
+                        <div class="img_upload">
+                            <p>
+                                <?php
+                                if(empty($model->img)){
+                                ?>
+                                <img class="defaule_img" src="../images/gogo-star.png" alt="">
+                                <?php
+                                }else{
+                                ?>
+                                <img class="partner_img" src="<?= $model->img?>" alt="">
+                                <?php
+                                }
+                                ?>
+                                <input class="upload_file"
+                                       ref="input"
+                                       type="file"
+                                       name="file"
+                                       accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg"
+                                >
+                            </p>
+                            <span>(点击图片，重新上传)</span>
+                        </div>
                         <input class="account" name="username" type="text" value="<?= $model->username; ?>" placeholder="登录名">
                         <input class="pwd" type="text" name="password" value="<?= $model->password; ?>" placeholder="密码">
                         <input class="account" type="text" name="type_of_cooperation" value="<?= $model->type_of_cooperation; ?>" placeholder="合作方式">
@@ -87,14 +101,28 @@ if(empty($model->type) || ($model->type == 3)){
                 <form action="/admin/update?id=<?=$model->uid?>" method="post" enctype="multipart/form-data">
                     <!--                        <img class="defaule_img"  src="" alt="" style="width:40px;height:40px">-->
                     <!--                        <input type="file" name="file" accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg" name="file">-->
-                    <img class="partner_img" src="" alt="">
-                    <img class="defaule_img" src="<?= $model->img?>" alt="" style="width:40px;height:40px">
-                    <input class="upload_file"
-                           ref="input"
-                           type="file"
-                           name="file"
-                           accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg"
-                    >
+                    <div class="img_upload">
+                        <p>
+                            <?php
+                            if(empty($model->img)){
+                            ?>
+                            <img class="defaule_img" src="../images/gogo-star.png" alt="">
+                            <?php
+                            }else{
+                            ?>
+                            <img class="partner_img" src="<?= $model->img?>" alt="">
+                            <?php
+                            }
+                            ?>
+                            <input class="upload_file"
+                                   ref="input"
+                                   type="file"
+                                   name="file"
+                                   accept="image/gif,image/jpeg,image/png,image/bmp,image/jpg"
+                            >
+                        </p>
+                        <span>(点击图片，重新上传)</span>
+                    </div>
                     <input class="account" name="username" type="text" value="<?= $model->username; ?>" placeholder="登录名">
                     <input class="pwd" type="text" name="password" value="<?= $model->password; ?>" placeholder="密码">
                     <button class="partner_account_sub">提交</button>
