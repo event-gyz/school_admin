@@ -123,7 +123,7 @@ $this->title = '合作商管理';
                         <span>(点击图片，重新上传)</span>
                     </div>
                     <input class="partner_name" type="text" name="username" placeholder="名称">
-                    <input class="partner_name" type="text" name="password" placeholder="登录密码">
+                    <input class="partner_name" type="password" name="password" placeholder="登录密码">
                     <input class="partner_type" type="text" name="type_of_cooperation" placeholder="合作类型">
                     <input class="partner_address" type="text" name="area" placeholder="地区">
                     <button class="partner_manage_sub">提交</button>

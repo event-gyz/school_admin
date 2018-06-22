@@ -47,7 +47,7 @@ if(empty($model->type) || ($model->type == 3)){
                             <span>(点击图片，重新上传)</span>
                         </div>
                         <input class="account" name="username" type="text" value="<?= $model->username; ?>" placeholder="登录名">
-                        <input class="pwd" type="text" name="password" value="<?= $model->password; ?>" placeholder="密码">
+                        <input class="pwd" type="password" name="password" value="<?= $model->password; ?>" placeholder="密码">
                         <input class="account" type="text" name="type_of_cooperation" value="<?= $model->type_of_cooperation; ?>" placeholder="合作方式">
                         <input class="account" type="text" name="area" value="<?= $model->area; ?>" placeholder="区域">
                         <button class="partner_account_sub">提交</button>
