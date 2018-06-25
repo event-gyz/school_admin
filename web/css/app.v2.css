@@ -1713,7 +1713,7 @@ th {
 }
 
 .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
-    background-color: #f9f9f9;
+    background-color: #EEEEEE;
 }
 
 .table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
@@ -9537,7 +9537,7 @@ a:hover .caret-white {
 
     .hbox {
         display: table;
-        table-layout: fixed;
+        /*table-layout: fixed;*/
         border-spacing: 0;
         width: 100%;
     }

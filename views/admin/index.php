@@ -35,20 +35,19 @@ $this->title = '合作商管理';
                 [
                     'label'=>'名称',
                     'filter'=>false,
-                    'attribute' => 'username',
+                    'value' => 'username',
                     'format'=>'raw',
                 ],
                 [
                     'label'=>'合作类型',
                     'filter'=>false,
-                    'attribute' => 'type_of_cooperation',
+                    'value' => 'type_of_cooperation',
                     'format'=>'raw',
                 ],
                 [
                     'label'=>'地区',
                     'filter'=>false,
-                    'attribute' => 'area',
-
+                    'value' => 'area',
                     'format'=>'raw',
                 ],
                 [
@@ -123,7 +122,7 @@ $this->title = '合作商管理';
                         <span>(点击图片，重新上传)</span>
                     </div>
                     <input class="partner_name" type="text" name="username" placeholder="名称">
-                    <input class="partner_name" type="password" name="password" placeholder="登录密码">
+                    <input class="partner_pwd" type="password" name="password" placeholder="登录密码">
                     <input class="partner_type" type="text" name="type_of_cooperation" placeholder="合作类型">
                     <input class="partner_address" type="text" name="area" placeholder="地区">
                     <button class="partner_manage_sub">提交</button>
@@ -141,6 +140,21 @@ $this->title = '合作商管理';
     $('.mask').click(function(){
         $(this).fadeOut()
         $('.add_partner_manage').fadeOut()
+    })
+
+    $('.partner_manage_sub').click(function(){
+        event.preventDefault()
+        var partner_img = $('.partner_manage_form .upload_file').val(),
+            partner_name = eval($('.partner_name').val()),
+            partner_pwd = eval($('.partner_pwd').val()),
+            partner_type = eval($('.partner_type').val()),
+            partner_address = eval($('.partner_address').val());
+        if(partner_img && partner_name && partner_pwd && partner_type && partner_address){
+            $('.partner_manage_form>form').submit()
+        }else{
+            layer.msg('请填写完整信息!')
+            return false;
+        }
     })
 </script>
     

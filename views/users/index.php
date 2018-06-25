@@ -33,32 +33,28 @@ $this->title = '数据列表';
 <div class="data_content">
     <section id="content" style="width:100%;height:100%">
         <section class="vbox">
-
-            <section class="scrollable padder" id="scrollable">
-                <div class="users-index" style="width: 100%;  overflow-x: scroll; overflow-y: hidden;white-space: nowrap; ">
-
-                    <div class="data_search">
-                            <a class="btn btn-sm btn-success" id="excel" href="/users/export-data?params=<?= base64_encode(json_encode($_GET)) ?>
+            <div class="data_search">
+                <a class="btn btn-sm btn-success" id="excel" href="/users/export-data?params=<?= base64_encode(json_encode($_GET)) ?>
 " target="_blank">导出</a>
-                        <span><?= Html::encode($this->title) ?></span>
-                    </div>
+                <span><?= Html::encode($this->title) ?></span>
+            </div>
+            <section class="scrollable padder" id="scrollable">
+                <div class="users-index" style="width: 100%;overflow-x: scroll; overflow-y: hidden;white-space: nowrap; ">
+
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [
                 //            ['class' => 'yii\grid\SerialColumn'],
                 //            'uid',
-                            'nick_name',
-//                            [
-//                                'label'=>'省份',
-//                                'attribute'=>'province',
-//                                'value'=>'member.province'
-//
-//                            ],
+                            [
+                                'label'=>'昵称',
+                                'attribute'=>'name',
+                                'value'=>'nick_name'
+                            ],
                             [
                                 'attribute' => 'province',
                                 'label'=>'省份',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'province',
@@ -68,7 +64,6 @@ $this->title = '数据列表';
                             [
                                 'attribute' => 'city',
                                 'label'=>'城市',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'city',
@@ -78,7 +73,6 @@ $this->title = '数据列表';
                             [
                                 'attribute' => 'age',
                                 'label'=>'年龄',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'birth_day',
@@ -92,9 +86,8 @@ $this->title = '数据列表';
                                     },
                             ],
                             [
-                                'attribute' => 'gender',
+                                // 'attribute' => 'gender',
                                 'label'=>'性别',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'gender',
@@ -118,11 +111,6 @@ $this->title = '数据列表';
                                 'value'=>'member.cellphone'
                             ],
                             [
-                                'label'=>'微信昵称',
-                                'attribute'=>'nickname',
-                                'value'=>'member.nickname'
-                            ],
-                            [
                                 'label'=>'来源',
                                 'attribute'=>'agency_id',
                                 'filter' => Html::activeDropDownList(
@@ -140,9 +128,8 @@ $this->title = '数据列表';
                                     },
                             ],
                             [
-                                'attribute' => 'height_index',
+                                // 'attribute' => 'height_index',
                                 'label'=>'身高',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'height_index',
@@ -155,9 +142,8 @@ $this->title = '数据列表';
                             ],
 
                             [
-                                'attribute' => 'weight_index',
+                                // 'attribute' => 'weight_index',
                                 'label'=>'体重',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'weight_index',
@@ -170,9 +156,8 @@ $this->title = '数据列表';
                                     },
                             ],
                             [
-                                'attribute' => 'type_0',
+                                // 'attribute' => 'type_0',
                                 'label'=>'语言',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'type_0',
@@ -189,9 +174,8 @@ $this->title = '数据列表';
                                     },
                             ],
                             [
-                                'attribute' => 'type_1',
+                                // 'attribute' => 'type_1',
                                 'label'=>'人格',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'type_1',
@@ -208,9 +192,8 @@ $this->title = '数据列表';
                                     },
                             ],
                             [
-                                'attribute' => 'type_2',
+                                // 'attribute' => 'type_2',
                                 'label'=>'大动作',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'type_2',
@@ -227,9 +210,8 @@ $this->title = '数据列表';
                                     },
                             ],
                             [
-                                'attribute' => 'type_3',
+                                // 'attribute' => 'type_3',
                                 'label'=>'小动作',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'type_3',
@@ -246,9 +228,8 @@ $this->title = '数据列表';
                                     },
                             ],
                             [
-                                'attribute' => 'type_4',
+                                // 'attribute' => 'type_4',
                                 'label'=>'认知',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'type_4',
@@ -265,9 +246,8 @@ $this->title = '数据列表';
                                     },
                             ],
                             [
-                                'attribute' => 'type_5',
+                                // 'attribute' => 'type_5',
                                 'label'=>'自我帮助',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'type_5',
@@ -284,9 +264,8 @@ $this->title = '数据列表';
                                     },
                             ],
                             [
-                                'attribute' => 'buds_index',
+                                // 'attribute' => 'buds_index',
                                 'label'=>'牙齿',
-                                'headerOptions' => ['style'=>'width:70px'],
                                 'filter' => Html::activeDropDownList(
                                     $searchModel,
                                     'buds_index',
@@ -296,11 +275,9 @@ $this->title = '数据列表';
                                         $a = \app\models\WapBuds::find()->where(['uid'=>$model->supervisor_uid])->orderBy(['date' => SORT_ASC])->asArray()->one();
                                         return $a['date'];
                                     },
-                            ],
-
-
+                            ]
                 //            ['class' => 'yii\grid\ActionColumn'],
-                        ],
+                        ]
                     ]); ?>
                 </div>
             </section>

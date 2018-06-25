@@ -21,7 +21,7 @@ img{
 }
 
 /*共用样式*/
-#login,#administration{width:1280px;height:720px;background:#fff;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);}
+#login,#administration{width:100%;height:100%;background:#fff;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);}
 
 /*登录页面样式*/
 .login_bg{width:100%;height:452px;background: url('../images/login_bg.png') no-repeat;}
@@ -39,8 +39,11 @@ img{
 .remember_forget input{position: relative;top:2px;width:15px;height:15px;border:1px solid #CCCCCC;}
 .login_sub{width:100%;height:38px;border-radius: 4px;color:#fff;font-size: 18px;background: #5EC051;margin-top:22px;cursor: pointer;}
 
+.home{width:100%;height:100%;background:#fff;position: relative;}
+.home img{width:60%;height:auto;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);}
+
 /*系统管理页面*/
-.left_bar{float:left;width:195px;height:100%;background:#34495E;color:#90A0A2;font-weight: bold;}
+.left_bar{float:left;width:20%;height:100%;background:#34495E;color:#90A0A2;font-weight: bold;}
 .logo{height:90px;background:#2ECC71;padding-top: 8px;box-sizing: border-box;}
 .logo p{width:74px;height:74px;margin:0 auto;}
 .administration_name{height:75px;line-height: 75px;text-align: center;font-size: 18px;}
@@ -54,20 +57,20 @@ img{
 .data_center li a,.system_management li a{color:#95A5A6;display: block;}
 .data_center li:hover a,.system_management li:hover a{color:#2EC770;}
 
-.manage_content{float: left;width:1085px;}
-.manage_content .search_content{height:90px;}
+.manage_content{float: left;width:80%;height:100%;}
+.manage_content .search_content{height:75px;border-bottom: 1px solid #DFE2E2}
 .search{float:right;position: relative;}
 .search p{float:right;overflow: hidden;}
 .search ul{display:none;position: absolute;width:140px;top:64px;left:16px;line-height: 30px;border:1px solid #5BC94B;border-top:0;background:#5BC94B;color:#FFF;text-align: center;z-index: 10;box-sizing: border-box;}
 .search li{border-top: 1px solid #5BC94B;box-sizing: border-box;}
 .search ul li:hover{background:#FFF;color:#5BC94B;}
 .search ul li.active{background:#FFF;color:#5BC94B;border-top: 1px solid #5BC94B;box-sizing: border-box;}
-.search_content .search_type{float: right;margin-right: 45px;margin-top: 24px;width:172px;height:40px;border:1px solid #CFCFCF;border-radius: 20px;text-align: center;outline: none;background:#FFF;cursor: pointer;}
+.search_content .search_type{float: right;margin-right: 45px;margin-top: 8px;width:184px;height:40px;border:1px solid #CFCFCF;border-radius: 20px;text-align: center;outline: none;background:#FFF;cursor: pointer;}
 .search i{position: absolute;width:10px;height:6px;background: url('../images/drop_down.png') no-repeat;top:42px;right:60px;}
-.search_content button{float: right;width:40px;height:40px;background: #2ECC71 url('../images/search.png') no-repeat center center;background-size: 16px 16px;margin-top:24px;margin-right: 8px;border-radius: 50%;cursor: pointer;}
+.search_content button{float: right;width:40px;height:40px;background: #2ECC71 url('../images/search.png') no-repeat center center;background-size: 16px 16px;margin-top:8px;margin-right: 8px;border-radius: 50%;cursor: pointer;border:0;}
 .manage_container{display:none;height:630px;border-top: 1px solid #DBDEDE;padding:20px 20px 19px;box-sizing: border-box;background:#EDF0F0;}
 
-.main_account_manage,.partner_account,.partner_manage{width:1045px;height:680px;background: #fff;margin:20px 18px;box-sizing: border-box;}
+.main_account_manage,.partner_account,.partner_manage{width:90%;height:90%;background: #fff;margin:4% 5%;box-sizing: border-box;}
 .main_account_manage{padding: 20px 40px;}
 .main_account_manage>p,.partner_account_manage>p,.partner_account_list>p,.partner_manage>p{line-height: 50px;border-bottom: 1px solid #DEE1E2;color:#2ECC71;font-size: 20px;}
 .main_account_eqit,.partner_account_eqit{width:356px;margin:0 auto;}
@@ -79,10 +82,10 @@ img{
 .main_account_sub,.partner_account_sub,.partner_manage_sub{width:100%;height:50px;background:#2ECC71;color:#fff;margin-top:30px;font-size: 16px;cursor: pointer;border:0;}
 
 .partner_account{background: #EDF0F0;}
-.partner_account_manage{float:left;width:405px;height:100%;background: #fff;padding: 20px 16px;margin-right: 20px;box-sizing: border-box;}
+.partner_account_manage{float:left;width:40%;height:100%;background: #fff;padding: 20px 16px;margin-right: 5%;box-sizing: border-box;}
 .partner_account_manage>p,.partner_account_list>p{padding-left: 25px;}
 .partner_account_eqit p{width:96px;margin:34px auto;}
-.partner_account_list{float: left;width:620px;height:100%;background:#fff;padding: 20px 30px;box-sizing: border-box;}
+.partner_account_list{float: left;width:55%;height:100%;background:#fff;padding: 20px 30px;box-sizing: border-box;}
 .partner_account_list table,.partner_manage table{width:100%;text-align: center;margin-top:18px;font-size: 14px;color:#CBCBCB;border:0;}
 .partner_account_list table th,.partner_manage table thead tr th{line-height: 32px;text-align: center;}
 .partner_account_list table tbody tr td{line-height: 96px;}
@@ -91,10 +94,10 @@ img{
 .partner_account_list table td img{vertical-align: top;}
 .partner_account_list table td a,.partner_manage table td a{color:#2ECC71;text-decoration: underline;}
 
+.admin-index,.admin-update{height:100%;}
 .partner_manage{padding: 50px 90px;}
 .partner_manage>p{line-height: 70px;}
-.partner_manage .add_partner,.data_search button{background:#2ECC71;color:#fff;border-radius:4px;font-size: 16px;cursor: pointer;padding:2px 14px;margin-left: 20px;line-height: 25px;}
-.partner_manage .add_partner,.data_search #excel{background:#2ECC71;color:#fff;border-radius:4px;font-size: 16px;cursor: pointer;padding:2px 14px;margin-left: 20px;line-height: 25px;}
+.partner_manage .add_partner,.data_search a{background:#2ECC71;color:#fff;border-radius:4px;font-size: 16px;cursor: pointer;padding:2px 14px;margin-left: 20px;line-height: 25px;}
 .admin-index .partner_manage table tbody tr td{line-height: 78px;padding: 0;border:0;border-bottom: 1px solid #F2F3F3;background: #FFF;}
 .partner_manage table tr:nth-child(even) td{border-bottom: 1px solid #F2F3F3}
 .website{display:block;width:90%;height:44px;line-height: 44px;border:1px solid #ECECEC;padding-left: 12px;box-sizing: border-box;text-align: left;}
@@ -104,12 +107,11 @@ img{
 .add_partner_manage>p{line-height: 50px;border-bottom: 1px solid #E6E8E9;color:#2ECC71;font-size: 20px;}
 .partner_manage_form{width:355px;margin:0 auto;}
 
-.data_container{border-top:1px solid #DFE2E2;height:720px;background:#EDF0F0;box-sizing: border-box;}
-.data_active{padding:30px 40px;overflow: hidden;background:#fff;border-bottom: 1px solid #D5D8D8}
-.data_active li{float:left;width:308px;height:110px;text-align: center;background:#60B8F6;color:#fff;margin-right: 40px;}
+.data_container{border-top:1px solid #DFE2E2;height:100%;background:#EDF0F0;box-sizing: border-box;}
+.data_active{overflow: hidden;background:#fff;border-bottom: 1px solid #D5D8D8}
+.data_active li{float:left;width:24%;height:110px;text-align: center;background:#60B8F6;color:#fff;margin: 30px 0 30px 7%;}
 .data_active .new_membership_volume{background:#CE84DE;}
 .data_active .average_activity{background:#55DA8D;}
-.data_active li:last-child{margin:0;}
 .data_active .data_size{float: left;width:198px;height:100%;}
 .data_active .data_size p{margin-top: 20px;font-size: 14px;}
 .data_active .data_size b{line-height: 70px;font-size: 26px;}
@@ -119,13 +121,19 @@ img{
 .data_active .activity span{line-height: 24px;}
 .data_active .activity p{width:36px;height:36px;/*border:2px solid #fff;border-radius:50%;*/margin:4px auto;}
 .data_active .activity svg{width:36px;height:36px;}
-.data_content{margin-top:20px;margin-left:18px;width:1050px;height:415px;background: #fff;}
-.data_search{padding-top: 10px;line-height: 46px;border-bottom: 1px solid #E6E8E9;padding-left: 25px;}
-.data_search #excel{float:right;margin-right: 20px;margin-top: 10px;border:0;outline: none;}
+.data_content{margin:0 4%;margin-top:25px;width:92%;height:610px;background: #fff;}
+.data_search{padding-top: 10px;line-height: 46px;border-bottom: 1px solid #E6E8E9;padding-left: 15px;margin-bottom:8px;}
+.data_search a{float:right;margin-right: 20px;margin-top: 10px;border:0;outline: none;}
 .data_search p{float: right;width:208px;height:30px;margin-top:8px;margin-right:16px;position: relative;}
 .data_search p input{float:left;width:100%;height:100%;background: #D1D1D1;border-radius: 15px;padding-left: 15px;box-sizing: border-box;outline: none;border:0;}
 .data_search p i{position: absolute;width:16px;height:16px;right:15px;top:7px;background:url('../images/search.png') no-repeat;cursor: pointer;}
 .data_search span{font-size: 20px;color:#2ECC71;}
+.summary{line-height: 30px;}
+#scrollable{top:68px;}
+.data_container table .filters select,.data_container table .filters input,.data_container table .filters td{width:150px;}
+.data_container table tr th,.data_container table tr td{width:144px;text-align: center;border:0;border-right: 1px solid #F5F5F5;color:#3E3E3E;padding:8px;text-align: center;}
+.data_container table tr th{background:#D4D4D4;border:0;}
+.data_container table tr th:last-child,.data_container table tr td:last-child{border-right:0;}
 .data_list{width:1008px;margin: 15px 20px;padding-bottom: 8px;box-sizing: border-box;overflow-y: hidden;}
 .data_list ol>li{width:2448px;height:40px;box-sizing: border-box;}
 .data_list ol>li:nth-child(odd){background:#EEEEEE;}

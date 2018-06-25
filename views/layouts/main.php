@@ -119,7 +119,7 @@ $menu = array(
                         <div class="left_bar">
                             <div class="logo">
                                 <p>
-                                    <a href="/users/index">
+                                    <a href="/site/index">
                                         <img src="<?=Url::to('@web/images/logo.png');?>">
                                     </a>
                                 </p>
