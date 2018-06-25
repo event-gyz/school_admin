@@ -98,7 +98,7 @@ img{
 .partner_manage{padding: 50px 90px;}
 .partner_manage>p{line-height: 70px;}
 .partner_manage .add_partner,.data_search a{background:#2ECC71;color:#fff;border-radius:4px;font-size: 16px;cursor: pointer;padding:2px 14px;margin-left: 20px;line-height: 25px;}
-.admin-index .partner_manage table tbody tr td{line-height: 78px;padding: 0;border:0;border-bottom: 1px solid #F2F3F3;background: #FFF;}
+.admin-index .partner_manage table tbody tr td{line-height: 78px;padding: 0;border:0;border-bottom: 1px solid #F2F3F3;background: #FFF;white-space: nowrap;}
 .partner_manage table tr:nth-child(even) td{border-bottom: 1px solid #F2F3F3}
 .website{display:block;width:90%;height:44px;line-height: 44px;border:1px solid #ECECEC;padding-left: 12px;box-sizing: border-box;text-align: left;}
 
@@ -132,7 +132,7 @@ img{
 #scrollable{top:68px;}
 .data_container table .filters select,.data_container table .filters input,.data_container table .filters td{width:150px;}
 .data_container table tr th,.data_container table tr td{width:144px;text-align: center;border:0;border-right: 1px solid #F5F5F5;color:#3E3E3E;padding:8px;text-align: center;}
-.data_container table tr th{background:#D4D4D4;border:0;}
+.data_content table tr th{background:#D4D4D4;border:0;}
 .data_container table tr th:last-child,.data_container table tr td:last-child{border-right:0;}
 .data_list{width:1008px;margin: 15px 20px;padding-bottom: 8px;box-sizing: border-box;overflow-y: hidden;}
 .data_list ol>li{width:2448px;height:40px;box-sizing: border-box;}
