@@ -35,12 +35,10 @@ class UsersSearch extends Users
     public function allCity($province_name=''){
         if(!empty($province_name)){
             $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->andWhere(['province'=>$province_name])->asArray()->all();
-        }else{
-            $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->asArray()->all();
-        }
-        if(!empty($re)){
-            $val = array_column($re,'city');
-            $allCity = array_combine($val,$val);
+            if(!empty($re)){
+                $val = array_column($re,'city');
+                $allCity = array_combine($val,$val);
+            }
         }
         $allCity[0] = '全部';
         return array_reverse($allCity);
