@@ -130,10 +130,10 @@ img{
 .data_search span{font-size: 20px;color:#2ECC71;}
 .summary{line-height: 30px;}
 #scrollable{top:68px;}
-.data_container table .filters select,.data_container table .filters input,.data_container table .filters td{width:150px;}
-.data_container table tr th,.data_container table tr td{width:144px;text-align: center;border:0;border-right: 1px solid #F5F5F5;color:#3E3E3E;padding:8px;text-align: center;}
+.data_content table .filters select,.data_content table .filters input{width:150px;}
+.data_content table tr th,.data_content table tr td{width:144px;text-align: center;border:0;border-right: 1px solid #F5F5F5;color:#3E3E3E;padding:8px;text-align: center;white-space: nowrap;}
 .data_content table tr th{background:#D4D4D4;border:0;}
-.data_container table tr th:last-child,.data_container table tr td:last-child{border-right:0;}
+.data_content table tr th:last-child,.data_content table tr td:last-child{border-right:0;}
 .data_list{width:1008px;margin: 15px 20px;padding-bottom: 8px;box-sizing: border-box;overflow-y: hidden;}
 .data_list ol>li{width:2448px;height:40px;box-sizing: border-box;}
 .data_list ol>li:nth-child(odd){background:#EEEEEE;}
