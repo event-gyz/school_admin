@@ -104,6 +104,9 @@ if(empty($model->type) || ($model->type == 3)){
     ?>
         <div class="quit">
             <a href="/site/logout">退出</a>
+            <p class="extension_link">
+                成长日记推广链接：<a href="#">https://www.colavia.com.cn/cn/index.php?id=6</a>
+            </p>
         </div>
         <div class="main_account_manage">
             <p><?= Html::encode($this->title) ?></p>

@@ -195,6 +195,20 @@ $menu = array(
                 $('.search_type').val($(this).html())
                 $(this).parent().slideUp()
             })
+
+            $(function(){
+                var pathName = window.location.pathname
+                var lis = $('.system_management li')
+                $('.left_bar li').removeClass('hover')
+                if(pathName == '/admin/update'){
+                    $('.system_management li:first-child').addClass('hover')
+                }else if(pathName == '/admin/index'){
+                    $('.system_management li:last-child').addClass('hover')
+                }else if(pathName == "/users/index"){
+                    $('.data_center li:first-child').addClass('hover')
+                }
+            })
+                
         </script>
     </html>
 <?php $this->endPage() ?>
