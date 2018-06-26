@@ -12,6 +12,8 @@ use app\models\UsersSearch;
 
 <div class="users-search search_content">
 
+    <a href="/site/logout">退出</a>
+
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',

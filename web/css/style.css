@@ -39,12 +39,14 @@ img{
 .remember_forget input{position: relative;top:2px;width:15px;height:15px;border:1px solid #CCCCCC;}
 .login_sub{width:100%;height:38px;border-radius: 4px;color:#fff;font-size: 18px;background: #5EC051;margin-top:22px;cursor: pointer;}
 
-.home{width:100%;height:100%;background:#fff;position: relative;}
-.home img{width:60%;height:auto;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);}
+.home{width:100%;height:100%;background:#fff url('../images/index_bg.png');position: relative;}
+.home img{width:40%;height:auto;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);}
+.quit{display: flex;width:100%;height:10%;background:#fff;border-bottom: 1px solid #DBDEDE;align-items: center;justify-content: flex-end;box-sizing: border-box;}
+.quit a{margin-right:45px;width:60px;color:#3CCF79;font-size: 16px;text-align: center;}
 
 /*系统管理页面*/
 .left_bar{float:left;width:20%;height:100%;background:#34495E;color:#90A0A2;font-weight: bold;}
-.logo{height:90px;background:#2ECC71;padding-top: 8px;box-sizing: border-box;}
+.logo{height:10%;background:#2ECC71;padding-top: 8px;box-sizing: border-box;}
 .logo p{width:74px;height:74px;margin:0 auto;}
 .administration_name{height:75px;line-height: 75px;text-align: center;font-size: 18px;}
 .system_management>p,.data_center>p{padding-left: 72px;font-size: 16px;line-height: 48px;background: #243342;position: relative;}
@@ -65,12 +67,13 @@ img{
 .search li{border-top: 1px solid #5BC94B;box-sizing: border-box;}
 .search ul li:hover{background:#FFF;color:#5BC94B;}
 .search ul li.active{background:#FFF;color:#5BC94B;border-top: 1px solid #5BC94B;box-sizing: border-box;}
-.search_content .search_type{float: right;margin-right: 45px;margin-top: 8px;width:184px;height:40px;border:1px solid #CFCFCF;border-radius: 20px;text-align: center;outline: none;background:#FFF;cursor: pointer;}
+.search_content a{float: right;width:60px;margin-right: 45px;margin-top: 8px;line-height: 40px;color:#46D180;font-size: 16px;text-align: center;}
+.search_content .search_type{float: right;margin-right: 10px;margin-top: 8px;width:184px;height:40px;border:1px solid #CFCFCF;border-radius: 20px;text-align: center;outline: none;background:#FFF;cursor: pointer;}
 .search i{position: absolute;width:10px;height:6px;background: url('../images/drop_down.png') no-repeat;top:42px;right:60px;}
 .search_content button{float: right;width:40px;height:40px;background: #2ECC71 url('../images/search.png') no-repeat center center;background-size: 16px 16px;margin-top:8px;margin-right: 8px;border-radius: 50%;cursor: pointer;border:0;}
 .manage_container{display:none;height:630px;border-top: 1px solid #DBDEDE;padding:20px 20px 19px;box-sizing: border-box;background:#EDF0F0;}
 
-.main_account_manage,.partner_account,.partner_manage{width:90%;height:90%;background: #fff;margin:4% 5%;box-sizing: border-box;}
+.main_account_manage,.partner_account,.partner_manage{width:90%;height:80%;background: #fff;margin:4% 5%;box-sizing: border-box;}
 .main_account_manage{padding: 20px 40px;}
 .main_account_manage>p,.partner_account_manage>p,.partner_account_list>p,.partner_manage>p{line-height: 50px;border-bottom: 1px solid #DEE1E2;color:#2ECC71;font-size: 20px;}
 .main_account_eqit,.partner_account_eqit{width:356px;margin:0 auto;}

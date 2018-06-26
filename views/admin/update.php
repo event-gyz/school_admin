@@ -17,6 +17,9 @@ if(empty($model->type) || ($model->type == 3)){
     <?php
     if(empty($model->type) || ($model->type == 3)){
     ?>
+        <div class="quit">
+            <a href="/site/logout">退出</a>
+        </div>
         <div class="partner_account">
             <div class="partner_account_manage">
                 <p>宝贝星球</p>
@@ -95,6 +98,9 @@ if(empty($model->type) || ($model->type == 3)){
     <?php
     }else{
     ?>
+        <div class="quit">
+            <a href="/site/logout">退出</a>
+        </div>
         <div class="main_account_manage">
             <p><?= Html::encode($this->title) ?></p>
             <div class="main_account_eqit">

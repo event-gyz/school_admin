@@ -10,6 +10,9 @@ use yii\grid\GridView;
 $this->title = '合作商管理';
 ?>
 <div class="admin-index">
+    <div class="quit">
+        <a href="/site/logout">退出</a>
+    </div>
     <div class="partner_manage">
         <p>
             <span><?= Html::encode($this->title) ?></span>
