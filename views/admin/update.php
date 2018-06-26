@@ -15,14 +15,14 @@ if(empty($model->type) || ($model->type == 3)){
 <div class="admin-update">
 
     <?php
-    if(empty($model->type) || ($model->type == 3)){
+    if((empty($model->type) || ($model->type == 3)) && $model->uid != \Yii::$app->user->identity->uid){
     ?>
         <div class="quit">
             <a href="/site/logout">退出</a>
         </div>
         <div class="partner_account">
             <div class="partner_account_manage">
-                <p>宝贝星球</p>
+                <p><?=$model->username?></p>
                 <div class="partner_account_eqit">
                     <form action="/admin/update?id=<?=$model->uid?>" method="post" enctype="multipart/form-data">
 <!--                        <img class="defaule_img"  src="" alt="" style="width:40px;height:40px">-->

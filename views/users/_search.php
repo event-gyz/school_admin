@@ -24,6 +24,9 @@ use app\models\UsersSearch;
     $search = new UsersSearch();
     $data = $search->allAgency();
     ?>
+    <?php
+    if(\Yii::$app->user->identity->type==1) {
+    ?>
     <select id="userssearch-agency_id" class="form-control search_type" name="UsersSearch[agency_id]">
         <?php
         if ($data) {
@@ -33,10 +36,11 @@ use app\models\UsersSearch;
                 'selected="selected"';}?>><?php echo $cvalue;?></option>
             <?php }}?>
     </select>
+
     <div class="form-group">
         <?= Html::submitButton('', ['class' => '']) ?>
     </div>
-
+    <?php }?>
     <?php ActiveForm::end(); ?>
 
 </div>

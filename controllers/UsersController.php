@@ -42,6 +42,8 @@ class UsersController extends BController
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         if(isset($params['UsersSearch']['agency_id']) && !empty($params['UsersSearch']['agency_id'])){
             $agency_id = $params['UsersSearch']['agency_id'];
+        }else if(\Yii::$app->user->identity->type==3){
+            $agency_id = \Yii::$app->user->identity->uid;
         }
         $statistics = $this->getUserStatistics($agency_id);
         return $this->render('index', [

@@ -137,11 +137,17 @@ $menu = array(
                                             <span>账号管理</span>
                                         </a>
                                     </li>
+                                    <?php
+                                        if(\Yii::$app->user->identity->type==1) {
+                                    ?>
                                     <li>
                                         <a href="<?=Url::to(['admin/index']);?>">
                                             <span>合作商管理</span>
                                         </a>
                                     </li>
+                                    <?php
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                             <div class="data_center">
