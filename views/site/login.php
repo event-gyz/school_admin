@@ -1,3 +1,11 @@
+<?php
+/* @var $this \yii\web\View */
+/* @var $content string */
+// use app\assets\AppAsset;
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\helpers\Url;
+?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -7,7 +15,7 @@
 </head>
 <body>
 <div id="login">
-    <div class="login_bg"><p></p></div>
+    <div class="login_bg"><img src="<?=Url::to('@web/images/login_bg.png');?>"><p></p></div>
     <div class="logo"></div>
     <div class="modal">
         <div class="form">
