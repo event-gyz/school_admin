@@ -59,8 +59,8 @@ $this->title = '合作商管理';
                     'attribute' => 'id',
                     'value' => function($model){
                         if(!empty($model['uid'])){
-                            $url = Yii::$app->params['link']['colavia_url'];
-                            return "<a target='_blank' href='".$url."/cn/index.php?id=$model->uid'/>".$url."/cn/index.php?id=$model->uid</a>";
+                            $url = Yii::$app->params['link']['colavia_url'].'/cn/index.php?id='.$model->uid;
+                            return "<a target='_blank' href='".$url."'/>".$url."</a>";
                         }else{
                             return '';
                         }

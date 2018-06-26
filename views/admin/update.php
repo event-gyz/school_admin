@@ -15,7 +15,7 @@ if(empty($model->type) || ($model->type == 3)){
 <div class="admin-update">
 
     <?php
-    if(\Yii::$app->user->identity->type == 1){
+    if((\Yii::$app->user->identity->type == 1) && ($model->uid!=\Yii::$app->user->identity->uid)){
 
     ?>
         <div class="quit">
@@ -104,9 +104,12 @@ if(empty($model->type) || ($model->type == 3)){
     ?>
         <div class="quit">
             <a href="/site/logout">退出</a>
+            <?php if(\Yii::$app->user->identity->type==3){?>
             <p class="extension_link">
-                成长日记推广链接：<a href="#">https://www.colavia.com.cn/cn/index.php?id=6</a>
+                <?php $url = Yii::$app->params['link']['colavia_url'].'/cn/index.php?id='.\Yii::$app->user->identity->uid;?>
+                成长日记推广链接：<a href="<?=$url?>"><?=$url?></a>
             </p>
+            <?php }?>
         </div>
         <div class="main_account_manage">
             <p><?= Html::encode($this->title) ?></p>
