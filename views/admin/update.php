@@ -15,7 +15,7 @@ if(empty($model->type) || ($model->type == 3)){
 <div class="admin-update">
 
     <?php
-    if($model->type == 1 && $model->uid != \Yii::$app->user->identity->uid){
+    if(\Yii::$app->user->identity->type == 1){
 
     ?>
         <div class="quit">
