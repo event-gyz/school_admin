@@ -125,7 +125,7 @@ img{
 .data_active .activity p{width:36px;height:36px;/*border:2px solid #fff;border-radius:50%;*/margin:4px auto;}
 .data_active .activity svg{width:36px;height:36px;}
 .data_content{margin:0 4%;margin-top:25px;width:92%;height:610px;background: #fff;}
-.data_search{padding-top: 10px;line-height: 46px;border-bottom: 1px solid #E6E8E9;padding-left: 15px;margin-bottom:8px;}
+.data_search{padding-top: 10px;line-height: 46px;border-bottom: 1px solid #E6E8E9;padding-left: 15px;margin-bottom:5px;}
 .data_search a{float:right;margin-right: 20px;margin-top: 10px;border:0;outline: none;}
 .data_search p{float: right;width:208px;height:30px;margin-top:8px;margin-right:16px;position: relative;}
 .data_search p input{float:left;width:100%;height:100%;background: #D1D1D1;border-radius: 15px;padding-left: 15px;box-sizing: border-box;outline: none;border:0;}
