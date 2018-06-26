@@ -15,7 +15,8 @@ if(empty($model->type) || ($model->type == 3)){
 <div class="admin-update">
 
     <?php
-    if((empty($model->type) || ($model->type == 3)) && $model->uid != \Yii::$app->user->identity->uid){
+    if($model->type == 1 && $model->uid != \Yii::$app->user->identity->uid){
+
     ?>
         <div class="quit">
             <a href="/site/logout">退出</a>
@@ -97,6 +98,9 @@ if(empty($model->type) || ($model->type == 3)){
         </div>
     <?php
     }else{
+        if(\Yii::$app->user->identity->uid != $model->uid){
+            echo "<script>window.history.back(-1);</script>";
+        }
     ?>
         <div class="quit">
             <a href="/site/logout">退出</a>
