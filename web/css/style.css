@@ -161,3 +161,7 @@ img{
 .page_size .paging{float: left;margin:0 12px;}
 .page_size .paging a{color:#55DA8D;}
 .page_size .paging a.first,.page_size .paging a.prev{color:#999899;}
+
+.dropdownlist{padding: 0;margin:0 5px;width:50px;}
+.pagination > li > a{color:#2ECC71;background:#fff;}
+.pagination > .active > a,.pagination > li > a:hover,.pagination > .active > a:hover,.pagination > li > a:focus{background:#2ECC71;border-color: #2ECC71;color:#fff;}
