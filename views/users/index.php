@@ -8,6 +8,9 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = '数据列表';
+$dataProvider->pagination = [
+    'pageSizeLimit' => [1, 100],
+];
 ?>
 <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 <ul class="data_active">
