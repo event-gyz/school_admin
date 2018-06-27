@@ -22,6 +22,7 @@ class UsersSearch extends Users
     public $province;
     public $cellphone;
     public $agency_id;
+    public $uid;
 
     public function allProvince(){
         if(\Yii::$app->user->identity->type==3){
@@ -39,22 +40,25 @@ class UsersSearch extends Users
         return array_reverse($allProvince);
     }
     public function allCity($province_name=''){
+        $connection  = Yii::$app->db;
         if(!empty($province_name)){
             if(\Yii::$app->user->identity->type==3){
                 $agency_id = \Yii::$app->user->identity->uid;
-                $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->andWhere(['province'=>$province_name])->andWhere(['agency_id'=>$agency_id])->asArray()->all();
+                $sql     = "select distinct city from member left join `user` on `user`.supervisor_uid=member.uid where city!='' and province='{$province_name}' and agency_id={$agency_id} and `user`.uid!=''";
             }else{
-                $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->andWhere(['province'=>$province_name])->asArray()->all();
+                $sql     = "select distinct city from member left join `user` on `user`.supervisor_uid=member.uid where city!='' and province='{$province_name}' and `user`.uid!=''";
             }
         }else{
             if(\Yii::$app->user->identity->type==3){
                 $agency_id = \Yii::$app->user->identity->uid;
-                $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->andWhere(['agency_id'=>$agency_id])->asArray()->all();
+                $sql     = "select distinct city from member left join `user` on `user`.supervisor_uid=member.uid where city!='' and agency_id={$agency_id} and `user`.uid!=''";
             }else{
-                $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->asArray()->all();
+                $sql     = "select distinct city from member left join `user` on `user`.supervisor_uid=member.uid where city!='' and `user`.uid!=''";
             }
         }
-
+//        echo $sql;exit;
+        $command = $connection->createCommand($sql);
+        $re     = $command->queryAll();
         if(!empty($re)){
             $val = array_column($re,'city');
             $allCity = array_combine($val,$val);
@@ -80,8 +84,8 @@ class UsersSearch extends Users
     public function rules()
     {
         return [
-            [['uid', 'gender', 'supervisor_uid', 'buds_index'], 'integer'],
-            [['id', 'last_name', 'first_name','city','province', 'agency_id', 'birth_day', 'image_url', 'type_0', 'type_1', 'type_2', 'type_3', 'type_4', 'type_5', 'weight_index', 'height_index','cellphone'], 'safe'],
+            [[ 'gender', 'supervisor_uid', 'buds_index'], 'integer'],
+            [['id', 'last_name', 'first_name','city','uid','province', 'agency_id', 'birth_day', 'image_url', 'type_0', 'type_1', 'type_2', 'type_3', 'type_4', 'type_5', 'weight_index', 'height_index','cellphone'], 'safe'],
         ];
     }
 

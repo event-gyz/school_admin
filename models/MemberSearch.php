@@ -18,7 +18,7 @@ class MemberSearch extends Member
     public function rules()
     {
         return [
-            [['uid', 'credit', 'epaper', 'show_id', 'share_time', 'agency_id'], 'integer'],
+            [['credit', 'epaper', 'show_id', 'share_time', 'agency_id'], 'integer'],
             [['id', 'password', 'first_name', 'last_name', 'nickname', 'cellphone', 'email', 'wx_openid', 'city', 'address', 'image_url', 'father_image', 'mother_image', 'membership', 'create_time'], 'safe'],
         ];
     }

@@ -38,7 +38,6 @@ class Member extends \yii\db\ActiveRecord
     {
         return 'member';
     }
-
     /**
      * @inheritdoc
      */
