@@ -148,10 +148,10 @@ $this->title = '合作商管理';
     $('.partner_manage_sub').click(function(){
         event.preventDefault()
         var partner_img = $('.partner_manage_form .upload_file').val(),
-            partner_name = eval($('.partner_name').val()),
-            partner_pwd = eval($('.partner_pwd').val()),
-            partner_type = eval($('.partner_type').val()),
-            partner_address = eval($('.partner_address').val());
+            partner_name = $('.partner_name').val(),
+            partner_pwd = $('.partner_pwd').val(),
+            partner_type = $('.partner_type').val(),
+            partner_address = $('.partner_address').val();
         if(partner_img && partner_name && partner_pwd && partner_type && partner_address){
             $('.partner_manage_form>form').submit()
         }else{
