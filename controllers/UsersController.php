@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Member;
+use app\models\User;
 use Yii;
 use app\models\Users;
 use app\models\UsersSearch;
@@ -61,13 +62,13 @@ class UsersController extends BController
         $result['new'] = 0;
         $result['ative'] = 0;
         if(empty($agency_id)){
-            $result['all'] = Member::find()->joinWith(['user'])->where(['<>','user.uid','null'])->asArray()->count();
-            $result['new'] = Member::find()->joinWith(['user'])->where(['>','create_time',$time])->andWhere(['<>','user.uid','null'])->asArray()->count();
-            $result['ative'] = Member::find()->joinWith(['user'])->where(['>','last_login_time',$time3])->andWhere(['<>','user.uid','null'])->asArray()->count();
+            $result['all'] = Users::find()->joinWith(['member'])->asArray()->count();
+            $result['new'] = Users::find()->joinWith(['member'])->where(['>','member.create_time',$time])->asArray()->count();
+            $result['ative'] = Users::find()->joinWith(['member'])->where(['>','member.last_login_time',$time3])->asArray()->count();
         }else{
-            $result['all'] = Member::find()->joinWith(['user'])->where(['agency_id'=>$agency_id])->andWhere(['<>','user.uid','null'])->asArray()->count();
-            $result['new'] = Member::find()->joinWith(['user'])->where(['agency_id'=>$agency_id])->andWhere(['<>','user.uid','null'])->andWhere(['>','create_time',$time])->asArray()->count();
-            $result['ative'] = Member::find()->joinWith(['user'])->where(['agency_id'=>$agency_id])->andWhere(['<>','user.uid','null'])->andWhere(['>','last_login_time',$time3])->asArray()->count();
+            $result['all'] = Users::find()->joinWith(['member'])->where(['agency_id'=>$agency_id])->asArray()->count();
+            $result['new'] = Users::find()->joinWith(['member'])->where(['agency_id'=>$agency_id])->andWhere(['>','member.create_time',$time])->asArray()->count();
+            $result['ative'] = Users::find()->joinWith(['member'])->where(['agency_id'=>$agency_id])->andWhere(['>','member.last_login_time',$time3])->asArray()->count();
 
         }
         return $result;
