@@ -218,18 +218,18 @@ class LinkPager extends Widget
 
         // total page
         if ($this->setPageSizeDrop) {
-            $buttons[] =  '&nbsp;&nbsp;<b style="font-size:14px">每页</b>'.Html::dropDownList($this->pagination->pageSizeParam, null, [10=>10,20=>20,50=>50,100=>100], ['class' => 'dropdownlist','options' => [$this->pagination->pageSize => ['selected' => true]]]).'<b style="font-size:14px">条数据</b>';
+            $buttons[] =  '&nbsp;&nbsp;<b style="font-size:14px;color:#323333;margin-left:15px;">每页</b>'.Html::dropDownList($this->pagination->pageSizeParam, null, [10=>10,20=>20,50=>50,100=>100], ['class' => 'dropdownlist','options' => [$this->pagination->pageSize => ['selected' => true]]]).'<b style="font-size:14px;color:#323333;">条数据</b>';
 
         }
 
         //gopage
         if ($this->goPageLabel) {
-            $input = '&nbsp;&nbsp;<b style="font-size:14px">跳转到</b>'.Html::input('number',$this->pagination->pageParam,$currentPage+1,array_merge([
+            $input = '&nbsp;&nbsp;<b style="font-size:14px;color:#323333;">跳转到</b>'.Html::input('number',$this->pagination->pageParam,$currentPage+1,array_merge([
                 'min' => 1,
                 'max' => $pageCount,
-                'style' => 'height:30px;width:80px;display:inline-block;margin:0 3px 0 3px',
+                'style' => 'height:30px;width:70px;display:inline-block;margin:0 5px;',
                 'class' => 'form-control',
-            ],$this->goPageLabelOptions)).'<b style="font-size:14px">页</b>';
+            ],$this->goPageLabelOptions)).'<b style="font-size:14px;color:#323333;margin-right:15px;">页</b>';
 
             $buttons[] = Html::tag('li',$input,[]);
         }
@@ -237,7 +237,7 @@ class LinkPager extends Widget
         // gobuttonlink
         if ($this->goPageLabel) {
             $buttons[] = Html::submitInput($this->goButtonLable ? $this->goButtonLable : '跳转',array_merge([
-                'style' => 'height:34px;display:inline-block;',
+                'style' => 'height:30px;border:0;background:#2ECC71;position:relative;top:-3px;',
                 'class' => 'btn btn-primary'
             ],$this->goButtonLableOptions));
         }
