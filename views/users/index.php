@@ -26,7 +26,7 @@ $this->title = '数据列表';
     <li class="average_activity">
         <div class="data_size">
             <p>活跃度</p>
-            <b><?=$statistice['ative']?></b>
+            <b><?=sprintf("%.1f",substr(sprintf("%.3f", $statistice['ative']/$statistice['all']), 0, -2))*100,'%'?></b>
         </div>
     </li>
 </ul>

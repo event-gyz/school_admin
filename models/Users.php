@@ -56,6 +56,8 @@ class Users extends \yii\db\ActiveRecord
     public function getMember(){
         return $this->hasOne(Member::className(),['uid'=>'supervisor_uid']);
     }
+
+
     /**
      * @inheritdoc
      */

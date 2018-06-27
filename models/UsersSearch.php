@@ -24,7 +24,13 @@ class UsersSearch extends Users
     public $agency_id;
 
     public function allProvince(){
-        $re = Member::find()->select(['province'])->distinct()->where(['<>','province',''])->asArray()->all();
+        if(\Yii::$app->user->identity->type==3){
+            $agency_id = \Yii::$app->user->identity->uid;
+            $re = Member::find()->select(['province'])->distinct()->where(['<>','province',''])->andWhere(['agency_id'=>$agency_id])->asArray()->all();
+        }else{
+            $re = Member::find()->select(['province'])->distinct()->where(['<>','province',''])->asArray()->all();
+        }
+
         if(!empty($re)){
             $val = array_column($re,'province');
             $allProvince = array_combine($val,$val);
@@ -34,11 +40,24 @@ class UsersSearch extends Users
     }
     public function allCity($province_name=''){
         if(!empty($province_name)){
-            $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->andWhere(['province'=>$province_name])->asArray()->all();
-            if(!empty($re)){
-                $val = array_column($re,'city');
-                $allCity = array_combine($val,$val);
+            if(\Yii::$app->user->identity->type==3){
+                $agency_id = \Yii::$app->user->identity->uid;
+                $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->andWhere(['province'=>$province_name])->andWhere(['agency_id'=>$agency_id])->asArray()->all();
+            }else{
+                $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->andWhere(['province'=>$province_name])->asArray()->all();
             }
+        }else{
+            if(\Yii::$app->user->identity->type==3){
+                $agency_id = \Yii::$app->user->identity->uid;
+                $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->andWhere(['agency_id'=>$agency_id])->asArray()->all();
+            }else{
+                $re = Member::find()->select(['city'])->distinct()->where(['<>','city',''])->asArray()->all();
+            }
+        }
+
+        if(!empty($re)){
+            $val = array_column($re,'city');
+            $allCity = array_combine($val,$val);
         }
         $allCity[0] = '全部';
         return array_reverse($allCity);

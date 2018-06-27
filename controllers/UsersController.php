@@ -55,15 +55,16 @@ class UsersController extends BController
 
 
     public function getUserStatistics($agency_id=0){
-        $time = date("Y-m-d H:i:s", strtotime("-3 month"));
+        $time = date("Y-m-d H:i:s", strtotime("-7 day"));
+        $time3 = date("Y-m-d H:i:s", strtotime("-3 month"));
         if(empty($agency_id)){
-            $result['all'] = Member::find()->asArray()->count();
-            $result['new'] = Member::find()->andWhere(['>','create_time',$time])->asArray()->count();
-            $result['ative'] = Member::find()->andWhere(['>','last_login_time',$time])->asArray()->count();
+            $result['all'] = Member::find()->joinWith(['user'])->where(['<>','user.uid','null'])->asArray()->count();
+            $result['new'] = Member::find()->joinWith(['user'])->where(['>','create_time',$time])->andWhere(['<>','user.uid','null'])->asArray()->count();
+            $result['ative'] = Member::find()->joinWith(['user'])->where(['>','last_login_time',$time])->andWhere(['<>','user.uid','null'])->asArray()->count();
         }else{
-            $result['all'] = Member::find()->where(['agency_id'=>$agency_id])->asArray()->count();
-            $result['new'] = Member::find()->andWhere(['>','create_time',$time])->where(['agency_id'=>$agency_id])->asArray()->count();
-            $result['ative'] = Member::find()->where(['agency_id'=>$agency_id])->andWhere(['>','last_login_time',$time])->asArray()->count();
+            $result['all'] = Member::find()->joinWith(['user'])->where(['agency_id'=>$agency_id])->andWhere(['<>','user.uid','null'])->asArray()->count();
+            $result['new'] = Member::find()->joinWith(['user'])->where(['agency_id'=>$agency_id])->andWhere(['<>','user.uid','null'])->andWhere(['>','create_time',$time])->asArray()->count();
+            $result['ative'] = Member::find()->joinWith(['user'])->where(['agency_id'=>$agency_id])->andWhere(['<>','user.uid','null'])->andWhere(['>','last_login_time',$time])->asArray()->count();
 
         }
         return $result;
