@@ -9,8 +9,8 @@ use yii\grid\GridView;
 
 $this->title = '数据列表';
 ?>
+<?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 <ul class="data_active">
-    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
     <li class="data_total">
         <div class="data_size">
             <p>数据总量</p>
