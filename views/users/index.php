@@ -53,11 +53,24 @@ $this->title = '数据列表';
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
+                        'pager'=>[
+                            //'options'=>['class'=>'hidden']//关闭分页
+                            'firstPageLabel' => '首页',
+                            'prevPageLabel' => '《',
+                            'nextPageLabel' => '》',
+                            'lastPageLabel' => '尾页',
+                            'goPageLabel' => true,
+                            'setPageSizeDrop' =>true,
+                            'totalPageLable' => '共x页',
+                            'goButtonLable' => 'GO',
+                            'maxButtonCount' => 5
+                        ],
+
                         'columns' => [
                 //            ['class' => 'yii\grid\SerialColumn'],
                 //            'uid',
                             [
-                                'label'=>'昵称',
+                                'label'=>'宝贝',
                                 'attribute'=>'name',
                                 'value'=>'nick_name'
                             ],

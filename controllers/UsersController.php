@@ -40,7 +40,7 @@ class UsersController extends BController
         $agency_id = 0;
         $searchModel = new UsersSearch();
         $params = Yii::$app->request->queryParams;
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search($params);
         if(isset($params['UsersSearch']['agency_id']) && !empty($params['UsersSearch']['agency_id'])){
             $agency_id = $params['UsersSearch']['agency_id'];
         }else if(\Yii::$app->user->identity->type==3){

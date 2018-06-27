@@ -158,7 +158,7 @@ $menu = array(
                                 </p>
                                 <ul>
                                     <li>
-                                        <a href="<?=Url::to(['users/index']);?>">
+                                        <a href="<?=Url::to(['users/index?per-page=10&page=1']);?>">
                                             <span>数据展示</span>
                                         </a>
                                     </li>
