@@ -21,7 +21,7 @@ img{
 }
 
 /*共用样式*/
-#login,#administration{background:#fff;position: relative;}
+#login,#administration{background:#fff;position: relative;height:100%;}
 
 /*登录页面样式*/
 .login_bg{width:100%;height:452px;background: url('../images/login_bg.png') no-repeat;}
@@ -61,7 +61,7 @@ img{
 .data_center li a,.system_management li a{color:#95A5A6;display: block;}
 .data_center li:hover a,.system_management li:hover a,.data_center li.hover a,.system_management li.hover a{color:#2EC770;}
 
-.manage_content{width:80%;margin-left: 20%;min-height: 100%;overflow: hidden;}
+.manage_content{width:80%;margin-left: 20%;height: 100%;overflow: hidden;}
 .manage_content .search_content{height:90px;border-bottom: 1px solid #DFE2E2;background: #fff;}
 .search{float:right;position: relative;}
 .search p{float:right;overflow: hidden;}
@@ -113,7 +113,7 @@ img{
 .add_partner_manage>p{line-height: 50px;border-bottom: 1px solid #E6E8E9;color:#2ECC71;font-size: 20px;}
 .partner_manage_form{width:355px;margin:0 auto;}
 
-.data_container{background:#EDF0F0;box-sizing: border-box;overflow: hidden;}
+.data_container{height:100%;background:#EDF0F0;box-sizing: border-box;overflow: hidden;}
 .data_active{background:#fff;border-bottom: 1px solid #D5D8D8;overflow: hidden;}
 .data_active li{float:left;width:24%;height:110px;text-align: center;background:#60B8F6;color:#fff;margin: 30px 0 30px 7%;}
 .data_active .new_membership_volume{background:#CE84DE;}
